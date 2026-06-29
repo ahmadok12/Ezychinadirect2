@@ -266,12 +266,196 @@ h1{
   display:none;margin-top:2px;
 }
 .form-input.error{border-color:var(--red);background:#fff9f9}
+/* ---- Country Code Selector ---- */
+.mobile-field-wrap{
+  display:flex;gap:0;align-items:stretch;
+  border:1.5px solid rgba(0,0,0,.1);
+  border-radius:12px;
+  overflow:visible;
+  background:#fafafa;
+  transition:border-color .2s,box-shadow .2s;
+  position:relative;
+}
+.mobile-field-wrap:focus-within{
+  border-color:var(--red);
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(222,41,16,.08);
+}
+.country-code-wrap{position:relative;flex-shrink:0}
+.cc-btn{
+  display:flex;align-items:center;gap:5px;
+  background:transparent;border:none;border-right:1.5px solid rgba(0,0,0,.09);
+  border-radius:0;
+  padding:0 10px 0 12px;height:100%;min-width:80px;
+  cursor:pointer;font-family:var(--font-body);
+  transition:background .15s;
+}
+.cc-btn:hover{background:rgba(0,0,0,.04)}
+.cc-flag{font-size:16px;line-height:1;flex-shrink:0}
+.cc-dial{font-size:13px;font-weight:600;color:var(--black);letter-spacing:.2px;white-space:nowrap}
+.cc-arrow{width:11px;height:11px;color:var(--gray);transition:transform .2s;flex-shrink:0}
+.cc-btn.open .cc-arrow{transform:rotate(180deg)}
+
+.cc-dropdown{
+  position:absolute;top:calc(100% + 6px);left:0;
+  background:#fff;border:1px solid rgba(0,0,0,.1);
+  border-radius:14px;box-shadow:0 10px 36px rgba(0,0,0,.14);
+  width:260px;z-index:500;
+  opacity:0;transform:translateY(-6px) scale(.97);pointer-events:none;
+  transition:opacity .18s,transform .18s;
+  overflow:hidden;
+}
+.cc-dropdown.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
+.cc-search-wrap{padding:8px 8px 6px;border-bottom:1px solid rgba(0,0,0,.06)}
+.cc-search{
+  width:100%;font-family:var(--font-body);font-size:12.5px;
+  border:1.5px solid rgba(0,0,0,.09);border-radius:8px;
+  padding:7px 10px;outline:none;background:#fafafa;color:var(--black);
+  transition:border-color .15s;
+}
+.cc-search:focus{border-color:var(--red);background:#fff}
+.cc-search::placeholder{color:#bbb}
+.cc-list{max-height:220px;overflow-y:auto;padding:4px}
+.cc-list::-webkit-scrollbar{width:4px}
+.cc-list::-webkit-scrollbar-track{background:transparent}
+.cc-list::-webkit-scrollbar-thumb{background:rgba(0,0,0,.12);border-radius:4px}
+.cc-item{
+  display:flex;align-items:center;gap:9px;
+  padding:7px 9px;border-radius:8px;cursor:pointer;
+  transition:background .12s;
+}
+.cc-item:hover{background:rgba(0,0,0,.05)}
+.cc-item.selected{background:#fff5f5;color:var(--red)}
+.cc-item .ci-flag{font-size:16px;width:22px;text-align:center;flex-shrink:0}
+.cc-item .ci-name{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--black);flex:1}
+.cc-item.selected .ci-name{color:var(--red);font-weight:700}
+.cc-item .ci-code{font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--gray);white-space:nowrap}
+.cc-auto-tag{
+  font-size:9px;font-weight:700;background:var(--yellow);color:#111;
+  border-radius:4px;padding:1px 5px;margin-left:auto;flex-shrink:0;
+}
+.cc-number-input{
+  border:none !important;background:transparent !important;
+  border-radius:0 12px 12px 0 !important;
+  box-shadow:none !important;
+  flex:1;
+  padding-left:12px;
+}
+.cc-number-input:focus{box-shadow:none !important}
+
+/* Fix: CN / currency code text visibility in dark sections */
+.contact-info-section .sel-btn,
+.contact-info-section .sel-btn .cc-dial{color:#fff}
+.office-flag{font-size:28px;flex-shrink:0;line-height:1;margin-top:2px;filter:drop-shadow(0 0 2px rgba(0,0,0,.3))}
+#langCode[data-cn], #currCode[data-cn]{color:var(--black)}
+
+/* ========== MAIN FOOTER ========== */
+.site-footer{
+  background:#0a0a0a;
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:72px 24px 0;
+  position:relative;
+  overflow:hidden;
+}
+.site-footer::before{
+  content:'';
+  position:absolute;
+  top:-120px;left:50%;transform:translateX(-50%);
+  width:700px;height:320px;
+  background:radial-gradient(ellipse at center, rgba(222,41,16,.09) 0%, transparent 70%);
+  pointer-events:none;
+}
+.footer-inner{max-width:1100px;margin:0 auto;}
+
+/* TOP GRID */
+.footer-top{
+  display:grid;
+  grid-template-columns:1.8fr 1fr 1fr 1fr;
+  gap:48px;
+  padding-bottom:56px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+/* BRAND COL */
+.footer-brand{display:flex;flex-direction:column}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.footer-logo-icon{width:36px;height:36px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.footer-logo-icon svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.2}
+.footer-logo-name{font-family:var(--font-display);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:#fff}
+.footer-logo-name span{color:var(--red)}
+.footer-tagline{font-family:var(--font-body);font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.45);margin-bottom:22px;max-width:280px}
+.footer-social{display:flex;gap:8px;margin-bottom:22px}
+.fsoc-btn{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s,transform .2s;flex-shrink:0}
+.fsoc-btn:hover{background:rgba(222,41,16,.2);border-color:rgba(222,41,16,.4);transform:translateY(-2px)}
+.fsoc-btn svg{width:16px;height:16px;fill:#fff}
+.footer-trust-pills{display:flex;flex-wrap:wrap;gap:6px}
+.ftp{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:4px 10px;font-family:var(--font-body);font-size:10.5px;font-weight:600;color:rgba(255,255,255,.55)}
+.ftp-dot{width:5px;height:5px;background:#4ade80;border-radius:50%;flex-shrink:0}
+
+/* LINK COLUMNS */
+.footer-col-title{font-family:var(--font-display);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:#fff;margin-bottom:18px}
+.footer-links{display:flex;flex-direction:column;gap:10px;list-style:none}
+.footer-links a{font-family:var(--font-body);font-size:13px;font-weight:500;color:rgba(255,255,255,.45);text-decoration:none;transition:color .18s;display:flex;align-items:center;gap:7px}
+.footer-links a:hover{color:#fff}
+.fl-icon{font-size:12px;width:18px;text-align:center;flex-shrink:0;opacity:.6}
+
+/* CONTACT COL */
+.footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
+.fci-icon{width:30px;height:30px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);margin-top:1px}
+.fci-text{font-family:var(--font-body);font-size:12.5px;color:rgba(255,255,255,.45);line-height:1.5}
+.fci-text strong{color:#fff;font-weight:600;display:block;font-size:13px}
+.fci-text a{color:rgba(255,255,255,.45);text-decoration:none;transition:color .15s}
+.fci-text a:hover{color:#fff}
+.footer-wa-cta{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1a5c35,#25D366 60%,#2ee878);border:none;border-radius:12px;padding:11px 16px;font-family:var(--font-body);font-size:12.5px;font-weight:700;color:#fff;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(37,211,102,.28);margin-top:4px;width:100%;justify-content:center}
+.footer-wa-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.38)}
+.footer-wa-cta svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
+
+/* MARKETS ROW */
+.footer-mid{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.footer-mid-left,.footer-mid-right{display:flex;flex-direction:column;gap:10px}
+.footer-mid-label{font-family:var(--font-body);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.3)}
+.footer-markets{display:flex;flex-wrap:wrap;gap:7px}
+.fmarket{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:5px 12px;font-family:var(--font-body);font-size:11.5px;font-weight:600;color:rgba(255,255,255,.6);transition:all .18s}
+.fmarket:hover{background:rgba(255,255,255,.1);color:#fff}
+.fmarket-flag{font-size:14px}
+.footer-certs{display:flex;gap:8px;flex-wrap:wrap}
+.fcert{display:flex;align-items:center;gap:6px;background:rgba(255,222,0,.06);border:1px solid rgba(255,222,0,.15);border-radius:8px;padding:7px 12px;font-family:var(--font-body);font-size:11px;font-weight:700;color:rgba(255,222,0,.75)}
+
+/* BOTTOM BAR */
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:20px 0 28px}
+.footer-copy{font-family:var(--font-body);font-size:11.5px;color:rgba(255,255,255,.25);line-height:1.5}
+.footer-copy a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .15s}
+.footer-copy a:hover{color:rgba(255,255,255,.55)}
+.footer-legal{display:flex;gap:18px;flex-wrap:wrap}
+.footer-legal a{font-family:var(--font-body);font-size:11.5px;color:rgba(255,255,255,.25);text-decoration:none;transition:color .15s;white-space:nowrap}
+.footer-legal a:hover{color:rgba(255,255,255,.55)}
+.footer-made{font-family:var(--font-body);font-size:11px;color:rgba(255,255,255,.18);white-space:nowrap}
+.footer-made span{color:var(--red)}
+
+/* BACK TO TOP */
+.back-to-top{position:fixed;bottom:96px;right:28px;z-index:998;width:40px;height:40px;border-radius:12px;background:rgba(17,17,17,.88);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.3);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .25s,transform .25s,background .2s;text-decoration:none}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:all}
+.back-to-top:hover{background:var(--red);border-color:var(--red)}
+.back-to-top svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round}
+
+@media(max-width:900px){
+  .footer-top{grid-template-columns:1fr 1fr;gap:36px}
+  .footer-mid{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:600px){
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .site-footer{padding:52px 20px 0}
+  .back-to-top{bottom:88px;right:20px}
+}
+
 @media(max-width:600px){
   .contact-card{padding:24px 20px 28px}
   .form-grid{grid-template-columns:1fr}
   .form-group.full{grid-column:auto}
   .form-submit{flex-direction:column;align-items:stretch}
   .btn-submit{justify-content:center}
+  .cc-dropdown{width:240px}
 }
 
 /* ========== FLOATING WHATSAPP BUTTON ========== */
@@ -554,6 +738,59 @@ h1{
 }
 .preview-thumb .thumb-fallback{
   font-size:26px;opacity:.6;
+}
+
+/* Preview thumb — product info overlay */
+.preview-thumb{
+  cursor:pointer;
+  text-decoration:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.preview-thumb .thumb-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.3) 55%, transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:6px;
+  opacity:0;
+  transition:opacity .22s ease;
+}
+.preview-thumb:hover .thumb-overlay,
+.preview-thumb:focus .thumb-overlay{
+  opacity:1;
+}
+.thumb-pname{
+  font-family:var(--font-body);font-size:9.5px;font-weight:700;
+  color:#fff;line-height:1.3;margin-bottom:3px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  text-shadow:0 1px 3px rgba(0,0,0,.5);
+}
+.thumb-pmeta{
+  display:flex;align-items:center;gap:4px;flex-wrap:wrap;
+}
+.thumb-price{
+  font-family:var(--font-display);font-size:11px;font-weight:900;
+  color:var(--yellow);letter-spacing:.3px;
+  text-shadow:0 1px 2px rgba(0,0,0,.4);
+}
+.thumb-moq{
+  font-family:var(--font-body);font-size:8px;font-weight:600;
+  color:rgba(255,255,255,.8);background:rgba(255,255,255,.15);
+  border-radius:3px;padding:1px 4px;white-space:nowrap;
+}
+.thumb-wa-badge{
+  margin-top:4px;
+  display:inline-flex;align-items:center;gap:3px;
+  background:#25D366;border-radius:4px;padding:2px 6px;
+  font-family:var(--font-body);font-size:8px;font-weight:700;color:#fff;
+  width:fit-content;
+}
+.thumb-wa-badge svg{width:9px;height:9px;fill:#fff;flex-shrink:0}
+
+/* On mobile show overlay always (no hover) */
+@media(hover:none){
+  .preview-thumb .thumb-overlay{
+    opacity:1;
+  }
 }
 
 /* Tap to explore strip */
@@ -1084,7 +1321,22 @@ h1{
           <label class="form-label" for="f-mobile">
             Mobile Number <span class="req">*</span>
           </label>
-          <input class="form-input required-field" type="tel" id="f-mobile" placeholder="+92 300 0000000" autocomplete="tel"/>
+          <div class="mobile-field-wrap">
+            <div class="country-code-wrap" id="ccWrap">
+              <button type="button" class="cc-btn" id="ccBtn">
+                <span class="cc-flag" id="ccFlag">🇵🇰</span>
+                <span class="cc-dial" id="ccDial">+92</span>
+                <svg class="cc-arrow" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+              </button>
+              <div class="cc-dropdown" id="ccDrop">
+                <div class="cc-search-wrap">
+                  <input type="text" class="cc-search" id="ccSearch" placeholder="Search country…" autocomplete="off"/>
+                </div>
+                <div class="cc-list" id="ccList"></div>
+              </div>
+            </div>
+            <input class="form-input required-field cc-number-input" type="tel" id="f-mobile" placeholder="300 0000000" autocomplete="tel"/>
+          </div>
           <span class="field-error" id="f-mobile-err">Please enter your mobile number.</span>
         </div>
 
@@ -1583,14 +1835,36 @@ CATEGORIES.forEach(function(cat){
   hdr += '<div class="cat-count">'+cat.products.length+' products</div>';
   hdr += '</div>';
 
-  // Preview grid (6 items)
+  // Preview grid (6 items) — with product info overlay + WhatsApp link
   var prev = '<div class="cat-preview">';
   for(var i=0;i<6;i++){
     var pItem = cat.preview[i];
+    var prod = cat.products[i] || null;
+    // Build WhatsApp link for this specific product
+    var waHref = '#';
+    if(prod){
+      var waTxt = '*EzyChinaDirect Product Enquiry*\n📦 Product: '+prod.name+'\n💰 Listed at: '+prod.price+' (MOQ: '+prod.moq+')\n\nHi, I\'m interested in sourcing this product. Please send me a quote.';
+      waHref = 'https://wa.me/923039447337?text='+encodeURIComponent(waTxt);
+    }
+    // Overlay HTML
+    var overlayHtml = '';
+    if(prod){
+      overlayHtml = '<div class="thumb-overlay">'
+        +'<div class="thumb-pname">'+prod.name+'</div>'
+        +'<div class="thumb-pmeta">'
+          +'<span class="thumb-price">'+prod.price+'</span>'
+          +'<span class="thumb-moq">MOQ '+prod.moq+'</span>'
+        +'</div>'
+        +'<div class="thumb-wa-badge">'
+          +'<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.44.65 4.72 1.78 6.7L2 30l7.56-1.74A13.93 13.93 0 0 0 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm7.56 19.34c-.32.9-1.88 1.72-2.58 1.82-.66.1-1.48.14-2.38-.16-.56-.18-1.28-.42-2.2-.82-3.88-1.68-6.42-5.6-6.62-5.86-.2-.26-1.6-2.14-1.6-4.08 0-1.94 1.02-2.9 1.38-3.3.36-.4.78-.5 1.04-.5h.74c.24 0 .56-.08.88.66l1.22 2.98c.1.22.04.48-.08.68l-.46.68c-.12.18-.24.36-.1.62.14.26.62 1.04 1.34 1.68.92.82 1.7 1.08 1.94 1.2.24.12.38.1.52-.06l.66-.76c.16-.2.32-.26.52-.18l2.82 1.32c.26.12.42.18.48.28.06.46-.26 1.86-.58 2.76z"/></svg>'
+          +' WhatsApp'
+        +'</div>'
+      +'</div>';
+    }
     if(typeof pItem === 'string' && pItem.startsWith('http')){
-      prev += '<div class="preview-thumb"><img src="'+pItem+'" alt="" loading="lazy" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'"/><span class="thumb-fallback" style="display:none">📷</span></div>';
+      prev += '<a class="preview-thumb" href="'+waHref+'" target="_blank" rel="noopener"><img src="'+pItem+'" alt="'+(prod?prod.name:'')+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"/><span class="thumb-fallback" style="display:none">📷</span>'+overlayHtml+'</a>';
     } else {
-      prev += '<div class="preview-thumb"><span class="thumb-fallback">'+pItem+'</span></div>';
+      prev += '<a class="preview-thumb" href="'+waHref+'" target="_blank" rel="noopener"><span class="thumb-fallback">'+pItem+'</span>'+overlayHtml+'</a>';
     }
   }
   prev += '</div>';
@@ -1666,8 +1940,9 @@ function closeOverlay(){
   activeCatId = null;
 }
 
-// Delegate click on explore strips
+// Delegate click on explore strips (but not on preview thumbs — those are WA links)
 catGrid.addEventListener('click',function(e){
+  if(e.target.closest('.preview-thumb')) return; // let anchor handle it
   var strip = e.target.closest('.cat-explore');
   if(strip) openOverlay(strip.dataset.cat);
 });
@@ -1698,60 +1973,190 @@ document.addEventListener('keydown',function(e){
 })();
 /* ========== END PRODUCT SHOWCASE JS ========== */
 
-/* --- CONTACT FORM --- */
+/* --- CONTACT FORM + COUNTRY CODE SELECTOR --- */
 (function(){
-  var submitBtn=document.getElementById('submitBtn');
-  var mobileInput=document.getElementById('f-mobile');
-  var mobileErr=document.getElementById('f-mobile-err');
 
-  function validate(){
-    var ok=true;
-    var mob=mobileInput.value.trim();
-    if(!mob){
-      mobileInput.classList.add('error');
-      mobileErr.style.display='block';
-      ok=false;
-    } else {
-      mobileInput.classList.remove('error');
-      mobileErr.style.display='none';
-    }
-    return ok;
+/* ===== COUNTRY DATA ===== */
+var COUNTRIES=[
+  {flag:'🇵🇰',name:'Pakistan',code:'PK',dial:'+92',auto:['PK']},
+  {flag:'🇦🇪',name:'UAE',code:'AE',dial:'+971',auto:['AE']},
+  {flag:'🇸🇦',name:'Saudi Arabia',code:'SA',dial:'+966',auto:['SA']},
+  {flag:'🇬🇧',name:'United Kingdom',code:'GB',dial:'+44',auto:['GB']},
+  {flag:'🇺🇸',name:'United States',code:'US',dial:'+1',auto:['US']},
+  {flag:'🇨🇳',name:'China',code:'CN',dial:'+86',auto:['CN']},
+  {flag:'🇶🇦',name:'Qatar',code:'QA',dial:'+974',auto:['QA']},
+  {flag:'🇰🇼',name:'Kuwait',code:'KW',dial:'+965',auto:['KW']},
+  {flag:'🇧🇭',name:'Bahrain',code:'BH',dial:'+973',auto:['BH']},
+  {flag:'🇴🇲',name:'Oman',code:'OM',dial:'+968',auto:['OM']},
+  {flag:'🇮🇳',name:'India',code:'IN',dial:'+91',auto:['IN']},
+  {flag:'🇧🇩',name:'Bangladesh',code:'BD',dial:'+880',auto:['BD']},
+  {flag:'🇳🇬',name:'Nigeria',code:'NG',dial:'+234',auto:['NG']},
+  {flag:'🇪🇬',name:'Egypt',code:'EG',dial:'+20',auto:['EG']},
+  {flag:'🇯🇴',name:'Jordan',code:'JO',dial:'+962',auto:['JO']},
+  {flag:'🇹🇷',name:'Turkey',code:'TR',dial:'+90',auto:['TR']},
+  {flag:'🇮🇩',name:'Indonesia',code:'ID',dial:'+62',auto:['ID']},
+  {flag:'🇲🇾',name:'Malaysia',code:'MY',dial:'+60',auto:['MY']},
+  {flag:'🇦🇺',name:'Australia',code:'AU',dial:'+61',auto:['AU']},
+  {flag:'🇩🇪',name:'Germany',code:'DE',dial:'+49',auto:['DE']},
+  {flag:'🇫🇷',name:'France',code:'FR',dial:'+33',auto:['FR']},
+  {flag:'🇨🇦',name:'Canada',code:'CA',dial:'+1',auto:['CA']},
+  {flag:'🇳🇱',name:'Netherlands',code:'NL',dial:'+31',auto:['NL']},
+  {flag:'🇸🇬',name:'Singapore',code:'SG',dial:'+65',auto:['SG']},
+  {flag:'🇰🇷',name:'South Korea',code:'KR',dial:'+82',auto:['KR']},
+  {flag:'🇵🇭',name:'Philippines',code:'PH',dial:'+63',auto:['PH']},
+  {flag:'🇿🇦',name:'South Africa',code:'ZA',dial:'+27',auto:['ZA']}
+];
+
+var selectedCountry=COUNTRIES[0]; // default Pakistan
+var ccBtn=document.getElementById('ccBtn');
+var ccDrop=document.getElementById('ccDrop');
+var ccFlag=document.getElementById('ccFlag');
+var ccDial=document.getElementById('ccDial');
+var ccList=document.getElementById('ccList');
+var ccSearch=document.getElementById('ccSearch');
+var dropOpen=false;
+
+function renderList(filter){
+  var f=(filter||'').toLowerCase();
+  ccList.innerHTML='';
+  COUNTRIES.filter(function(c){
+    return !f||(c.name.toLowerCase().indexOf(f)>=0)||(c.dial.indexOf(f)>=0)||(c.code.toLowerCase().indexOf(f)>=0);
+  }).forEach(function(c){
+    var el=document.createElement('div');
+    el.className='cc-item'+(c===selectedCountry?' selected':'');
+    var autoTag=c===selectedCountry&&autoDetected?' <span class="cc-auto-tag">AUTO</span>':'';
+    el.innerHTML='<span class="ci-flag">'+c.flag+'</span><span class="ci-name">'+c.name+'</span><span class="ci-code">'+c.dial+'</span>'+autoTag;
+    el.addEventListener('click',function(e){
+      e.stopPropagation();
+      selectCountry(c,false);
+      closeDrop();
+    });
+    ccList.appendChild(el);
+  });
+}
+
+function selectCountry(c,isAuto){
+  selectedCountry=c;
+  autoDetected=isAuto;
+  ccFlag.textContent=c.flag;
+  ccDial.textContent=c.dial;
+  // Update placeholder
+  var placeholders={PK:'300 0000000',AE:'50 000 0000',SA:'5X XXX XXXX',GB:'7XXX XXXXXX',US:'(XXX) XXX-XXXX',CN:'1XX XXXX XXXX'};
+  document.getElementById('f-mobile').placeholder=placeholders[c.code]||'000 0000000';
+}
+
+function openDrop(){
+  dropOpen=true;
+  ccDrop.classList.add('open');
+  ccBtn.classList.add('open');
+  ccSearch.value='';
+  renderList('');
+  setTimeout(function(){ccSearch.focus();},80);
+}
+function closeDrop(){
+  dropOpen=false;
+  ccDrop.classList.remove('open');
+  ccBtn.classList.remove('open');
+}
+
+ccBtn.addEventListener('click',function(e){
+  e.stopPropagation();
+  dropOpen?closeDrop():openDrop();
+});
+ccSearch.addEventListener('input',function(){renderList(ccSearch.value);});
+document.addEventListener('click',function(e){
+  if(dropOpen&&!document.getElementById('ccWrap').contains(e.target)) closeDrop();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&dropOpen) closeDrop();
+});
+
+/* ===== GEO AUTO-DETECT ===== */
+var autoDetected=false;
+(function tryGeoDetect(){
+  // Try via timezone first (instant, no network)
+  var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+  var tzMap={
+    'Asia/Karachi':'PK','Asia/Dubai':'AE','Asia/Riyadh':'SA',
+    'Asia/Kuwait':'KW','Asia/Bahrain':'BH','Asia/Muscat':'OM',
+    'Asia/Qatar':'QA','Asia/Shanghai':'CN','Asia/Kolkata':'IN',
+    'Asia/Dhaka':'BD','Europe/London':'GB','America/New_York':'US',
+    'America/Toronto':'CA','Australia/Sydney':'AU','Asia/Singapore':'SG',
+    'Asia/Seoul':'KR','Asia/Manila':'PH','Asia/Kuala_Lumpur':'MY',
+    'Asia/Jakarta':'ID','Europe/Berlin':'DE','Europe/Paris':'FR',
+    'Africa/Cairo':'EG','Asia/Amman':'JO','Europe/Istanbul':'TR',
+    'Africa/Lagos':'NG','Africa/Johannesburg':'ZA','America/Los_Angeles':'US'
+  };
+  var detectedCode=tzMap[tz];
+  if(detectedCode){
+    var c=COUNTRIES.find(function(x){return x.code===detectedCode;});
+    if(c){selectCountry(c,true);renderList('');return;}
   }
-
-  mobileInput.addEventListener('input',function(){
-    if(mobileInput.value.trim()){
-      mobileInput.classList.remove('error');
-      mobileErr.style.display='none';
+  // Fallback: ip-api (free, no key needed)
+  fetch('https://api.country.is/').then(function(r){return r.json();}).then(function(d){
+    if(d&&d.country){
+      var c=COUNTRIES.find(function(x){return x.code===d.country;});
+      if(c){selectCountry(c,true);renderList('');}
     }
-  });
+  }).catch(function(){/* silent fail, keep default */});
+})();
 
-  submitBtn.addEventListener('click',function(){
-    if(!validate()) return;
+renderList('');
 
-    // Collect values
-    var name=document.getElementById('f-name').value.trim();
-    var mobile=mobileInput.value.trim();
-    var email=document.getElementById('f-email').value.trim();
-    var product=document.getElementById('f-product').value.trim();
-    var qty=document.getElementById('f-qty').value.trim();
+/* ===== FORM VALIDATION ===== */
+var submitBtn=document.getElementById('submitBtn');
+var mobileInput=document.getElementById('f-mobile');
+var mobileErr=document.getElementById('f-mobile-err');
+var mobileWrap=mobileInput.closest('.mobile-field-wrap');
 
-    // Build WhatsApp message
-    var msg='*New EzyChinaDirect Enquiry*\n';
-    if(name)  msg+='👤 Name: '+name+'\n';
-    msg+='📱 Mobile: '+mobile+'\n';
-    if(email) msg+='✉️ Email: '+email+'\n';
-    if(product) msg+='📦 Product: '+product+'\n';
-    if(qty)   msg+='🔢 Quantity: '+qty;
+function validate(){
+  var ok=true;
+  var mob=mobileInput.value.trim();
+  if(!mob){
+    mobileWrap.style.borderColor='var(--red)';
+    mobileWrap.style.boxShadow='0 0 0 3px rgba(222,41,16,.1)';
+    mobileErr.style.display='block';
+    ok=false;
+  } else {
+    mobileWrap.style.borderColor='';
+    mobileWrap.style.boxShadow='';
+    mobileErr.style.display='none';
+  }
+  return ok;
+}
 
-    var waUrl='https://wa.me/923039447337?text='+encodeURIComponent(msg);
+mobileInput.addEventListener('input',function(){
+  if(mobileInput.value.trim()){
+    mobileWrap.style.borderColor='';
+    mobileWrap.style.boxShadow='';
+    mobileErr.style.display='none';
+  }
+});
 
-    // Show success state
-    document.getElementById('contactForm').style.display='none';
-    document.getElementById('formSuccess').style.display='block';
+submitBtn.addEventListener('click',function(){
+  if(!validate()) return;
 
-    // Open WhatsApp after short delay
-    setTimeout(function(){ window.open(waUrl,'_blank'); }, 400);
-  });
+  var name=document.getElementById('f-name').value.trim();
+  var mobile=selectedCountry.dial+' '+mobileInput.value.trim();
+  var email=document.getElementById('f-email').value.trim();
+  var product=document.getElementById('f-product').value.trim();
+  var qty=document.getElementById('f-qty').value.trim();
+
+  var msg='*New EzyChinaDirect Enquiry*\n';
+  if(name)  msg+='👤 Name: '+name+'\n';
+  msg+='📱 Mobile: '+mobile+'\n';
+  if(email) msg+='✉️ Email: '+email+'\n';
+  if(product) msg+='📦 Product: '+product+'\n';
+  if(qty)   msg+='🔢 Quantity: '+qty;
+
+  var waUrl='https://wa.me/923039447337?text='+encodeURIComponent(msg);
+
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+
+  setTimeout(function(){ window.open(waUrl,'_blank'); }, 400);
+});
+
 })();
 })();
 </script>
@@ -1843,6 +2248,186 @@ document.addEventListener('keydown',function(e){
     </div>
   </div>
 </section>
+
+<!-- ========== BACK TO TOP ========== -->
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6" stroke-linejoin="round"/></svg>
+</a>
+
+<!-- ========== SITE FOOTER ========== -->
+<footer class="site-footer" id="footer">
+  <div class="footer-inner">
+
+    <!-- TOP: 4-column grid -->
+    <div class="footer-top">
+
+      <!-- COL 1: Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="footer-logo-name"><span>Ezy</span>ChinaDirect</div>
+        </div>
+        <p class="footer-tagline">Your trusted sourcing partner between China and Pakistan &amp; the Gulf. Factory prices, verified suppliers, door-to-door delivery.</p>
+        <div class="footer-social">
+          <!-- WhatsApp -->
+          <a class="fsoc-btn" href="https://wa.me/923039447337" target="_blank" rel="noopener" title="WhatsApp">
+            <svg viewBox="0 0 32 32"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.44.65 4.72 1.78 6.7L2 30l7.56-1.74A13.93 13.93 0 0 0 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm7.56 19.34c-.32.9-1.88 1.72-2.58 1.82-.66.1-1.48.14-2.38-.16-.56-.18-1.28-.42-2.2-.82-3.88-1.68-6.42-5.6-6.62-5.86-.2-.26-1.6-2.14-1.6-4.08 0-1.94 1.02-2.9 1.38-3.3.36-.4.78-.5 1.04-.5h.74c.24 0 .56-.08.88.66l1.22 2.98c.1.22.04.48-.08.68l-.46.68c-.12.18-.24.36-.1.62.14.26.62 1.04 1.34 1.68.92.82 1.7 1.08 1.94 1.2.24.12.38.1.52-.06l.66-.76c.16-.2.32-.26.52-.18l2.82 1.32c.26.12.42.18.48.28.06.46-.26 1.86-.58 2.76z"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a class="fsoc-btn" href="#" title="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a class="fsoc-btn" href="#" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a class="fsoc-btn" href="#" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a class="fsoc-btn" href="#" title="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a0a0a"/></svg>
+          </a>
+        </div>
+        <div class="footer-trust-pills">
+          <span class="ftp"><span class="ftp-dot"></span>500+ Shipments Completed</span>
+          <span class="ftp">🏭 On-ground in Yiwu</span>
+          <span class="ftp">⭐ 4.9/5 Client Rating</span>
+        </div>
+      </div>
+
+      <!-- COL 2: Services -->
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#contact"><span class="fl-icon">🔍</span>Product Sourcing</a></li>
+          <li><a href="#contact"><span class="fl-icon">🏭</span>Factory Audits</a></li>
+          <li><a href="#contact"><span class="fl-icon">🔍</span>Quality Inspection</a></li>
+          <li><a href="#contact"><span class="fl-icon">📦</span>Door-to-Door Shipping</a></li>
+          <li><a href="#contact"><span class="fl-icon">🛃</span>Customs Clearance</a></li>
+          <li><a href="#contact"><span class="fl-icon">🏷️</span>Private Labelling</a></li>
+          <li><a href="#contact"><span class="fl-icon">🤝</span>Trade Consulting</a></li>
+        </ul>
+      </div>
+
+      <!-- COL 3: Quick Links -->
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#"><span class="fl-icon">🏠</span>Home</a></li>
+          <li><a href="#contact"><span class="fl-icon">📋</span>Send Enquiry</a></li>
+          <li><a href="#"><span class="fl-icon">👥</span>Our Team</a></li>
+          <li><a href="#"><span class="fl-icon">⚙️</span>How It Works</a></li>
+          <li><a href="#"><span class="fl-icon">💰</span>Pricing</a></li>
+          <li><a href="#"><span class="fl-icon">📰</span>Blog &amp; Guides</a></li>
+          <li><a href="#contact-info"><span class="fl-icon">📍</span>Our Offices</a></li>
+        </ul>
+      </div>
+
+      <!-- COL 4: Contact -->
+      <div>
+        <div class="footer-col-title">Get in Touch</div>
+
+        <div class="footer-contact-item">
+          <div class="fci-icon">📱</div>
+          <div class="fci-text">
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/923039447337">+92 303 944 7337</a>
+          </div>
+        </div>
+
+        <div class="footer-contact-item">
+          <div class="fci-icon">✉️</div>
+          <div class="fci-text">
+            <strong>Email</strong>
+            <a href="mailto:ezychinadirect@gmail.com">ezychinadirect@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="footer-contact-item">
+          <div class="fci-icon">🕐</div>
+          <div class="fci-text">
+            <strong>Business Hours</strong>
+            Mon – Sat · 9am – 9pm PKT
+          </div>
+        </div>
+
+        <div class="footer-contact-item">
+          <div class="fci-icon">📍</div>
+          <div class="fci-text">
+            <strong>China Offices</strong>
+            Yiwu (Futian) &amp; Guangzhou (Haizhu)
+          </div>
+        </div>
+
+        <a class="footer-wa-cta" href="https://wa.me/923039447337?text=Hi%2C%20I%20want%20to%20enquire%20about%20sourcing%20from%20China." target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.44.65 4.72 1.78 6.7L2 30l7.56-1.74A13.93 13.93 0 0 0 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm7.56 19.34c-.32.9-1.88 1.72-2.58 1.82-.66.1-1.48.14-2.38-.16-.56-.18-1.28-.42-2.2-.82-3.88-1.68-6.42-5.6-6.62-5.86-.2-.26-1.6-2.14-1.6-4.08 0-1.94 1.02-2.9 1.38-3.3.36-.4.78-.5 1.04-.5h.74c.24 0 .56-.08.88.66l1.22 2.98c.1.22.04.48-.08.68l-.46.68c-.12.18-.24.36-.1.62.14.26.62 1.04 1.34 1.68.92.82 1.7 1.08 1.94 1.2.24.12.38.1.52-.06l.66-.76c.16-.2.32-.26.52-.18l2.82 1.32c.26.12.42.18.48.28.06.46-.26 1.86-.58 2.76z"/></svg>
+          Chat With Us Now
+        </a>
+      </div>
+    </div><!-- /footer-top -->
+
+    <!-- MIDDLE: Markets + Trust Certs -->
+    <div class="footer-mid">
+      <div class="footer-mid-left">
+        <div class="footer-mid-label">Markets We Serve</div>
+        <div class="footer-markets">
+          <span class="fmarket"><span class="fmarket-flag">🇵🇰</span>Pakistan</span>
+          <span class="fmarket"><span class="fmarket-flag">🇦🇪</span>UAE</span>
+          <span class="fmarket"><span class="fmarket-flag">🇸🇦</span>Saudi Arabia</span>
+          <span class="fmarket"><span class="fmarket-flag">🇶🇦</span>Qatar</span>
+          <span class="fmarket"><span class="fmarket-flag">🇰🇼</span>Kuwait</span>
+          <span class="fmarket"><span class="fmarket-flag">🇧🇭</span>Bahrain</span>
+          <span class="fmarket"><span class="fmarket-flag">🇴🇲</span>Oman</span>
+          <span class="fmarket"><span class="fmarket-flag">🇬🇧</span>UK</span>
+        </div>
+      </div>
+      <div class="footer-mid-right">
+        <div class="footer-mid-label">Why We're Trusted</div>
+        <div class="footer-certs">
+          <span class="fcert">🏭 6+ Yrs On-Ground in China</span>
+          <span class="fcert">🔒 Escrow Payment Protection</span>
+          <span class="fcert">📸 Photo Proof Every Order</span>
+          <span class="fcert">🚢 End-to-End Logistics</span>
+        </div>
+      </div>
+    </div><!-- /footer-mid -->
+
+    <!-- BOTTOM BAR -->
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2025 <strong style="color:rgba(255,255,255,.4)">EzyChinaDirect</strong> · China Sourcing Agency · All rights reserved.<br>
+        Registered offices in Yiwu &amp; Guangzhou, China.
+      </div>
+      <nav class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Cookie Policy</a>
+      </nav>
+      <div class="footer-made">Made with <span>♥</span> for Pakistan &amp; Gulf importers</div>
+    </div>
+
+  </div><!-- /footer-inner -->
+</footer>
+
+<script>
+// Back to top button
+(function(){
+  var btn=document.getElementById('backToTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  },{passive:true});
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
 
 </body>
 </html>
