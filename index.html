@@ -132,6 +132,147 @@ h1{
   .cta-row{flex-direction:column;align-items:stretch}
   .btn-primary,.btn-secondary{text-align:center;justify-content:center}
 }
+
+/* CONTACT FORM SECTION */
+.contact-section{
+  max-width:680px;
+  margin:0 auto 80px;
+  padding:0 24px;
+}
+.contact-header{
+  text-align:center;
+  margin-bottom:32px;
+}
+.contact-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff5f5;border:1px solid rgba(222,41,16,.2);
+  border-radius:50px;padding:5px 14px;
+  font-family:var(--font-body);font-size:11.5px;font-weight:600;
+  color:var(--red);letter-spacing:.5px;text-transform:uppercase;
+  margin-bottom:14px;box-shadow:var(--ps);
+}
+.contact-title{
+  font-family:var(--font-display);
+  font-size:clamp(32px,4vw,46px);
+  font-weight:900;text-transform:uppercase;
+  letter-spacing:.5px;line-height:1;
+  color:var(--black);
+  margin-bottom:10px;
+}
+.contact-title span{color:var(--red)}
+.contact-subtitle{
+  font-family:var(--font-body);font-size:14px;
+  color:var(--gray);line-height:1.6;
+}
+.contact-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:24px;
+  box-shadow:0 8px 40px rgba(0,0,0,.08),0 1px 0 rgba(255,255,255,.9) inset;
+  padding:36px 40px 40px;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.form-group{
+  display:flex;flex-direction:column;gap:6px;
+}
+.form-group.full{
+  grid-column:1/-1;
+}
+.form-label{
+  font-family:var(--font-body);
+  font-size:11.5px;font-weight:700;
+  color:var(--black);letter-spacing:.4px;
+  text-transform:uppercase;
+  display:flex;align-items:center;gap:5px;
+}
+.form-label .req{
+  color:var(--red);font-size:13px;line-height:1;
+}
+.form-label .opt{
+  font-size:10px;font-weight:500;color:var(--gray);
+  text-transform:none;letter-spacing:0;
+  background:rgba(0,0,0,.05);border-radius:4px;
+  padding:1px 6px;margin-left:2px;
+}
+.form-input,.form-textarea{
+  font-family:var(--font-body);
+  font-size:14px;font-weight:400;
+  color:var(--black);
+  background:#fafafa;
+  border:1.5px solid rgba(0,0,0,.1);
+  border-radius:12px;
+  padding:11px 14px;
+  outline:none;
+  transition:border-color .2s,background .2s,box-shadow .2s;
+  width:100%;
+}
+.form-input::placeholder,.form-textarea::placeholder{
+  color:#aaa;font-size:13px;
+}
+.form-input:focus,.form-textarea:focus{
+  border-color:var(--red);
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(222,41,16,.08);
+}
+.form-input.required-field:focus{
+  border-color:var(--red);
+  box-shadow:0 0 0 3px rgba(222,41,16,.1);
+}
+.form-textarea{
+  resize:vertical;min-height:96px;line-height:1.6;
+}
+.form-submit{
+  margin-top:24px;
+  display:flex;align-items:center;gap:14px;
+  flex-wrap:wrap;
+}
+.btn-submit{
+  background:var(--red);color:#fff;border:none;
+  padding:13px 32px;border-radius:50px;
+  font-family:var(--font-display);font-size:18px;
+  font-weight:800;letter-spacing:.8px;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 4px 20px rgba(222,41,16,.28);
+  flex-shrink:0;
+}
+.btn-submit:hover{background:#b81f0a;transform:translateY(-2px);box-shadow:0 6px 24px rgba(222,41,16,.35)}
+.btn-submit:active{transform:translateY(0)}
+.btn-submit svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.2}
+.form-note{
+  font-family:var(--font-body);font-size:12px;
+  color:var(--gray);line-height:1.5;
+  display:flex;align-items:flex-start;gap:6px;
+}
+.form-note-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.form-success{
+  display:none;
+  text-align:center;padding:32px 24px;
+}
+.form-success-icon{font-size:48px;margin-bottom:14px}
+.form-success-title{
+  font-family:var(--font-display);font-size:28px;font-weight:900;
+  text-transform:uppercase;color:var(--black);margin-bottom:8px;
+}
+.form-success-msg{
+  font-family:var(--font-body);font-size:14px;color:var(--gray);line-height:1.6;
+}
+.field-error{
+  font-family:var(--font-body);font-size:11px;color:var(--red);font-weight:600;
+  display:none;margin-top:2px;
+}
+.form-input.error{border-color:var(--red);background:#fff9f9}
+@media(max-width:600px){
+  .contact-card{padding:24px 20px 28px}
+  .form-grid{grid-template-columns:1fr}
+  .form-group.full{grid-column:auto}
+  .form-submit{flex-direction:column;align-items:stretch}
+  .btn-submit{justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -269,7 +410,82 @@ h1{
   </div>
 </section>
 
-<script>
+<!-- CONTACT / ENQUIRY FORM -->
+<section class="contact-section">
+  <div class="contact-header">
+    <div class="contact-eyebrow"><span class="eyebrow-dot"></span> Send an Enquiry</div>
+    <div class="contact-title">Tell Us What<br>You <span>Need</span></div>
+    <p class="contact-subtitle">Fill in your details and our team will respond within a few hours via WhatsApp or email.</p>
+  </div>
+
+  <div class="contact-card">
+    <div id="contactForm">
+      <div class="form-grid">
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="f-name">
+            Full Name <span class="opt">Optional</span>
+          </label>
+          <input class="form-input" type="text" id="f-name" placeholder="e.g. Ali Hassan" autocomplete="name"/>
+        </div>
+
+        <!-- Mobile Number (Mandatory) -->
+        <div class="form-group">
+          <label class="form-label" for="f-mobile">
+            Mobile Number <span class="req">*</span>
+          </label>
+          <input class="form-input required-field" type="tel" id="f-mobile" placeholder="+92 300 0000000" autocomplete="tel"/>
+          <span class="field-error" id="f-mobile-err">Please enter your mobile number.</span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group full">
+          <label class="form-label" for="f-email">
+            Email Address <span class="opt">Optional</span>
+          </label>
+          <input class="form-input" type="email" id="f-email" placeholder="you@example.com" autocomplete="email"/>
+        </div>
+
+        <!-- Describe Product -->
+        <div class="form-group full">
+          <label class="form-label" for="f-product">
+            Describe Product <span class="opt">Optional</span>
+          </label>
+          <textarea class="form-textarea" id="f-product" placeholder="e.g. Stainless steel water bottles, 500ml, screw-top lid, no branding needed…"></textarea>
+        </div>
+
+        <!-- Quantity -->
+        <div class="form-group">
+          <label class="form-label" for="f-qty">
+            Quantity <span class="opt">Optional</span>
+          </label>
+          <input class="form-input" type="text" id="f-qty" placeholder="e.g. 500 units"/>
+        </div>
+
+      </div><!-- /form-grid -->
+
+      <div class="form-submit">
+        <button class="btn-submit" id="submitBtn" type="button">
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          Send Enquiry
+        </button>
+        <div class="form-note">
+          <span class="form-note-icon">🔒</span>
+          <span>Your details are never shared. We'll reach out on WhatsApp or email — usually within a few hours.</span>
+        </div>
+      </div>
+    </div><!-- /contactForm -->
+
+    <!-- Success State -->
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">✅</div>
+      <div class="form-success-title">Enquiry Sent!</div>
+      <p class="form-success-msg">Thanks! Our team will be in touch on <strong>WhatsApp</strong> or email shortly.<br>We typically respond within a few hours.</p>
+    </div>
+
+  </div><!-- /contact-card -->
+</section>
 (function(){
 var T={
   en:{dir:'ltr',flag:'🇬🇧',code:'EN',nav_home:'Home',nav_services:'Services',nav_how:'How It Works',nav_team:'Our Team',nav_pricing:'Pricing',nav_contact:'Contact',cta_quote:'Get a Free Quote',cta_start:'Start Sourcing Now →',cta_how:'How It Works',eyebrow:"China's #1 Sourcing Partner for Pakistan & Gulf",h1_line1:'Source from China.',h1_line2:'Smarter.',h1_line3:' Faster.',h1_line4:'Risk-Free.',subtitle:'We eliminate the guesswork of importing from China — with a real team on the ground in Yiwu and Guangzhou, verified factories, and end-to-end logistics handled for you.',ticker_label:'Avg. Order Value',ticker_sub:'minimum sourcing order',ticker_save:'You Save vs. Local',pill1:'🏭 Factory Audits Included',pill2:'📦 Door-to-Door Shipping',pill3:'💰 No Hidden Fees',pill4:'🔒 Secure Payments',pill5:'🇨🇳 Yiwu & Guangzhou',badge1:'Shipments',badge2:'Retention',badge3:'Yrs in China',badge4:'Rating',c1tag:'Our Edge',c1title:'Real Team in China',c1desc:"Our staff in Yiwu and Guangzhou visit factories in person, verify quality, and negotiate prices you can't get remotely.",c2tag:'Proven Record',c2title:'Pakistan to Gulf Clients',c2desc:'From Lahore to Dubai, our clients return again and again. Verified reviews and real shipment records.',c3tag:'Zero Risk',c3title:'Money Protected Always',c3desc:'We hold payments in escrow, inspect every order before dispatch, and send photo proof.',notice:'We detected your region. Translate?',noticeBtn:'Translate'},
@@ -368,6 +584,62 @@ var tx=null;
 deck.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;stopAuto();},{passive:true});
 deck.addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?goTo(cur+1):goTo(cur-1);}tx=null;startAuto();},{passive:true});
 layout(cur);startAuto();
+
+/* --- CONTACT FORM --- */
+(function(){
+  var submitBtn=document.getElementById('submitBtn');
+  var mobileInput=document.getElementById('f-mobile');
+  var mobileErr=document.getElementById('f-mobile-err');
+
+  function validate(){
+    var ok=true;
+    var mob=mobileInput.value.trim();
+    if(!mob){
+      mobileInput.classList.add('error');
+      mobileErr.style.display='block';
+      ok=false;
+    } else {
+      mobileInput.classList.remove('error');
+      mobileErr.style.display='none';
+    }
+    return ok;
+  }
+
+  mobileInput.addEventListener('input',function(){
+    if(mobileInput.value.trim()){
+      mobileInput.classList.remove('error');
+      mobileErr.style.display='none';
+    }
+  });
+
+  submitBtn.addEventListener('click',function(){
+    if(!validate()) return;
+
+    // Collect values
+    var name=document.getElementById('f-name').value.trim();
+    var mobile=mobileInput.value.trim();
+    var email=document.getElementById('f-email').value.trim();
+    var product=document.getElementById('f-product').value.trim();
+    var qty=document.getElementById('f-qty').value.trim();
+
+    // Build WhatsApp message
+    var msg='*New EzyChinaDirect Enquiry*\n';
+    if(name)  msg+='👤 Name: '+name+'\n';
+    msg+='📱 Mobile: '+mobile+'\n';
+    if(email) msg+='✉️ Email: '+email+'\n';
+    if(product) msg+='📦 Product: '+product+'\n';
+    if(qty)   msg+='🔢 Quantity: '+qty;
+
+    var waUrl='https://wa.me/923000000000?text='+encodeURIComponent(msg);
+
+    // Show success state
+    document.getElementById('contactForm').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+
+    // Open WhatsApp after short delay
+    setTimeout(function(){ window.open(waUrl,'_blank'); }, 400);
+  });
+})();
 })();
 </script>
 </body>
