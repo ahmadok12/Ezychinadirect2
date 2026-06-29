@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EZY CHINA DIRECT</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#DE2910;--yellow:#FFDE00;--black:#111;--gray:#555;
+  --gs:0 4px 24px rgba(0,0,0,.10),0 1px 0 rgba(255,255,255,.8) inset;
+  --ps:0 2px 12px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.06);
+  --font-display:'Barlow Condensed',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+body{font-family:var(--font-body);background:#fff;color:var(--black);overflow-x:hidden;min-height:100vh}
+[dir="rtl"]{font-family:'Noto Nastaliq Urdu','DM Sans',sans-serif}
+
+/* NAV */
+.nav-outer{position:sticky;top:14px;z-index:200;display:flex;justify-content:center;padding:0 20px;pointer-events:none}
+nav{pointer-events:all;background:rgba(255,255,255,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.95);border-radius:999px;box-shadow:var(--gs);padding:5px 5px 5px 16px;display:flex;align-items:center;gap:0;width:fit-content;max-width:100%}
+.nav-logo{display:flex;align-items:center;gap:7px;flex-shrink:0;margin-right:10px}
+.nav-logo-icon{width:28px;height:28px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo-icon svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.2}
+.nav-brand{font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--black);letter-spacing:.5px;white-space:nowrap;text-transform:uppercase}
+.nav-brand span{color:var(--red)}
+.nav-sep{width:1px;height:18px;background:rgba(0,0,0,.1);margin:0 8px;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:0;flex-shrink:0}
+.nav-links a{font-family:var(--font-body);font-size:12.5px;font-weight:500;color:var(--gray);text-decoration:none;padding:6px 11px;border-radius:999px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--black);background:rgba(0,0,0,.05)}
+.nav-links a.active{background:rgba(0,0,0,.08);color:var(--black);font-weight:600}
+.nav-right{display:flex;align-items:center;gap:6px;margin-left:8px;flex-shrink:0}
+.nav-cta{background:var(--red);color:#fff;border:none;padding:8px 16px;border-radius:999px;font-family:var(--font-body);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .2s}
+.nav-cta:hover{background:#b81f0a}
+
+/* DROPDOWNS */
+.selector-wrap{position:relative;flex-shrink:0}
+.sel-btn{display:flex;align-items:center;gap:5px;background:rgba(0,0,0,.05);border:none;border-radius:999px;padding:6px 11px;font-family:var(--font-body);font-size:11.5px;font-weight:600;cursor:pointer;color:var(--black);white-space:nowrap;transition:background .2s}
+.sel-btn:hover{background:rgba(0,0,0,.09)}
+.sel-btn .arrow{font-size:9px;opacity:.5;transition:transform .2s}
+.sel-btn.open .arrow{transform:rotate(180deg)}
+.sel-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.12);padding:6px;min-width:190px;z-index:300;opacity:0;transform:translateY(-6px) scale(.97);pointer-events:none;transition:opacity .18s,transform .18s}
+.sel-dropdown.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
+.sel-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:9px;cursor:pointer;font-family:var(--font-body);font-size:12px;font-weight:500;transition:background .15s}
+.sel-item:hover{background:rgba(0,0,0,.05)}
+.sel-item.active{background:#fff5f5;color:var(--red);font-weight:700}
+.sel-item .flag{font-size:16px;width:22px;text-align:center}
+.sel-item .name{flex:1}
+.sel-item .code{font-size:10px;color:var(--gray);font-weight:600}
+.auto-badge{font-size:9px;font-weight:700;background:var(--yellow);color:#111;border-radius:4px;padding:1px 5px;margin-left:auto}
+
+/* HERO */
+.hero{min-height:calc(100vh - 70px);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:50px 40px 50px 60px;max-width:1300px;margin:0 auto;gap:0}
+.hero-left{padding-right:44px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff5f5;border:1px solid rgba(222,41,16,.2);border-radius:50px;padding:5px 14px;font-family:var(--font-body);font-size:11.5px;font-weight:600;color:var(--red);letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px;box-shadow:var(--ps)}
+.eyebrow-dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+
+h1{
+  font-family:var(--font-display);
+  font-size:clamp(48px,5.5vw,76px);
+  font-weight:900;
+  line-height:0.97;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--black);
+  margin-bottom:18px;
+}
+[dir="rtl"] h1{font-family:'Noto Nastaliq Urdu',sans-serif;font-size:clamp(32px,4vw,52px);line-height:1.4;letter-spacing:0;text-transform:none}
+.accent-red{color:var(--red)}
+.accent-yellow{background:var(--yellow);color:#111;padding:0 6px;border-radius:4px;display:inline-block}
+
+.subtitle{font-family:var(--font-body);font-size:15px;line-height:1.7;color:var(--gray);max-width:430px;margin-bottom:26px}
+[dir="rtl"] .subtitle{max-width:100%}
+
+.lang-notice{display:flex;align-items:center;gap:10px;background:#fffbe6;border:1px solid rgba(255,222,0,.5);border-radius:12px;padding:9px 14px;margin-bottom:20px;font-family:var(--font-body);font-size:12px;font-weight:500;color:#7a6000;box-shadow:var(--ps)}
+.lang-notice-btn{margin-left:auto;background:var(--yellow);border:none;border-radius:8px;padding:4px 10px;font-family:var(--font-body);font-size:11px;font-weight:700;cursor:pointer;color:#111;white-space:nowrap}
+.lang-notice-btn:hover{background:#e6c800}
+
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.pill{display:flex;align-items:center;gap:6px;border:1px solid rgba(0,0,0,.09);border-radius:50px;padding:6px 13px;font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--black);background:#fff;box-shadow:var(--ps)}
+
+.trust-row{display:flex;gap:10px;flex-wrap:wrap}
+.trust-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:14px;padding:11px 16px;box-shadow:var(--ps);min-width:84px}
+.trust-num{font-family:var(--font-display);font-size:26px;font-weight:900;color:var(--black);line-height:1;letter-spacing:.5px}
+.trust-num span{color:var(--red)}
+.trust-label{font-family:var(--font-body);font-size:9.5px;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.8px;margin-top:3px;text-align:center}
+
+.currency-ticker{display:flex;align-items:center;gap:8px;margin-bottom:24px;background:#f8f8f8;border:1px solid rgba(0,0,0,.07);border-radius:12px;padding:9px 14px;box-shadow:var(--ps)}
+.ticker-label{font-family:var(--font-body);font-weight:700;color:var(--gray);font-size:10px;text-transform:uppercase;letter-spacing:.6px}
+.ticker-rate{font-family:var(--font-display);font-weight:900;color:var(--black);font-size:22px;letter-spacing:.5px}
+.ticker-rate .curr-sym{color:var(--red);margin-right:1px}
+.ticker-sub{font-family:var(--font-body);font-size:10px;color:var(--gray)}
+.ticker-live{font-family:var(--font-body);font-size:9px;font-weight:700;background:#d4f5e2;color:#176b3a;border-radius:5px;padding:2px 6px}
+.ticker-loading{font-family:var(--font-body);font-size:10px;color:var(--gray);font-style:italic}
+
+.cta-row{display:flex;gap:10px;align-items:center;margin-top:26px}
+.btn-primary{background:var(--red);color:#fff;border:none;padding:13px 26px;border-radius:50px;font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:7px;box-shadow:0 4px 20px rgba(222,41,16,.25)}
+.btn-primary:hover{background:#b81f0a;transform:translateY(-2px)}
+.btn-secondary{background:#fff;color:var(--black);border:1.5px solid rgba(0,0,0,.13);padding:12px 24px;border-radius:50px;font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;transition:all .2s;box-shadow:var(--ps)}
+.btn-secondary:hover{border-color:var(--black)}
+
+/* DECK */
+.hero-right{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.deck{position:relative;width:330px;height:375px;cursor:pointer;user-select:none}
+.deck-card{position:absolute;width:100%;border-radius:22px;background:#fff;overflow:hidden;box-shadow:0 12px 50px rgba(0,0,0,.13),0 2px 8px rgba(0,0,0,.07);transition:transform .5s cubic-bezier(.34,1.1,.64,1),opacity .4s ease;transform-origin:bottom center;will-change:transform,opacity}
+.card-img-area{height:190px;display:flex;align-items:center;justify-content:center;font-size:68px}
+.card-body{padding:14px 16px 18px}
+.card-tag{display:inline-flex;align-items:center;border-radius:50px;padding:3px 11px;font-family:var(--font-body);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.card-tag.red{background:var(--red);color:#fff}
+.card-tag.yellow{background:var(--yellow);color:#111}
+.card-title{font-family:var(--font-display);font-size:21px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;color:var(--black);line-height:1.1;margin-bottom:6px}
+.card-desc{font-family:var(--font-body);font-size:12px;color:var(--gray);line-height:1.65}
+
+.carousel-controls{display:flex;align-items:center;gap:14px;margin-top:18px}
+.arr-btn{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(0,0,0,.12);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--ps);transition:all .2s;font-size:15px;color:var(--black)}
+.arr-btn:hover{border-color:var(--red);color:var(--red)}
+.deck-dots{display:flex;gap:6px;align-items:center}
+.ddot{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.15);transition:all .3s;cursor:pointer}
+.ddot.active{background:var(--red);width:22px;border-radius:4px}
+
+@media(max-width:768px){
+  .nav-outer{top:8px;padding:0 10px}
+  .nav-links,.nav-sep{display:none}
+  .hero{grid-template-columns:1fr;padding:24px 18px 40px;min-height:auto;gap:32px}
+  .hero-left{padding-right:0}
+  .hero-right{order:-1}
+  .deck{width:285px;height:345px}
+  h1{font-size:52px}
+  .cta-row{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-secondary{text-align:center;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="nav-outer">
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="nav-brand"><span>EZY</span> CHINA DIRECT</div>
+    </div>
+    <div class="nav-sep"></div>
+    <div class="nav-links">
+      <a href="#" class="active" data-t="nav_home">Home</a>
+      <a href="#" data-t="nav_services">Services</a>
+      <a href="#" data-t="nav_how">How It Works</a>
+      <a href="#" data-t="nav_team">Our Team</a>
+      <a href="#" data-t="nav_pricing">Pricing</a>
+      <a href="#" data-t="nav_contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="selector-wrap" id="langWrap">
+        <button class="sel-btn" id="langBtn"><span id="langFlag">🇬🇧</span><span id="langCode">EN</span><span class="arrow">▼</span></button>
+        <div class="sel-dropdown" id="langDrop">
+          <div class="sel-item" data-lang="en"><span class="flag">🇬🇧</span><span class="name">English</span><span class="code">EN</span></div>
+          <div class="sel-item" data-lang="ur"><span class="flag">🇵🇰</span><span class="name">اردو</span><span class="code">UR</span></div>
+          <div class="sel-item" data-lang="ar"><span class="flag">🇦🇪</span><span class="name">العربية</span><span class="code">AR</span></div>
+          <div class="sel-item" data-lang="zh"><span class="flag">🇨🇳</span><span class="name">中文</span><span class="code">ZH</span></div>
+        </div>
+      </div>
+      <div class="selector-wrap" id="currWrap">
+        <button class="sel-btn" id="currBtn"><span id="currIcon">$</span><span id="currCode">USD</span><span class="arrow">▼</span></button>
+        <div class="sel-dropdown" id="currDrop">
+          <div class="sel-item" data-curr="USD" data-sym="$"><span class="flag">🇺🇸</span><span class="name">US Dollar</span><span class="code">USD</span></div>
+          <div class="sel-item" data-curr="PKR" data-sym="₨"><span class="flag">🇵🇰</span><span class="name">Pakistani Rupee</span><span class="code">PKR</span></div>
+          <div class="sel-item" data-curr="AED" data-sym="د.إ"><span class="flag">🇦🇪</span><span class="name">UAE Dirham</span><span class="code">AED</span></div>
+          <div class="sel-item" data-curr="SAR" data-sym="﷼"><span class="flag">🇸🇦</span><span class="name">Saudi Riyal</span><span class="code">SAR</span></div>
+          <div class="sel-item" data-curr="CNY" data-sym="¥"><span class="flag">🇨🇳</span><span class="name">Chinese Yuan</span><span class="code">CNY</span></div>
+          <div class="sel-item" data-curr="GBP" data-sym="£"><span class="flag">🇬🇧</span><span class="name">British Pound</span><span class="code">GBP</span></div>
+        </div>
+      </div>
+      <button class="nav-cta" data-t="cta_quote">Get a Free Quote</button>
+    </div>
+  </nav>
+</div>
+
+<section class="hero">
+  <div class="hero-left">
+    <div id="langNotice" class="lang-notice" style="display:none">
+      <span>🌐</span>
+      <span id="langNoticeText">We detected your region. Translate to your language?</span>
+      <button class="lang-notice-btn" id="langNoticeBtn">Translate</button>
+    </div>
+
+    <div class="eyebrow"><span class="eyebrow-dot"></span><span data-t="eyebrow">China's #1 Sourcing Partner for Pakistan &amp; Gulf</span></div>
+
+    <h1>
+      <span data-t="h1_line1">Source from China.</span><br>
+      <span class="accent-red" data-t="h1_line2">Smarter.</span>
+      <span data-t="h1_line3"> Faster.</span><br>
+      <span class="accent-yellow" data-t="h1_line4">Risk-Free.</span>
+    </h1>
+
+    <p class="subtitle" data-t="subtitle">We eliminate the guesswork of importing from China — with a real team on the ground in Yiwu and Guangzhou, verified factories, and end-to-end logistics handled for you.</p>
+
+    <div class="currency-ticker">
+      <div>
+        <div class="ticker-label" data-t="ticker_label">Avg. Order Value</div>
+        <div class="ticker-rate"><span class="curr-sym" id="tickerSym">$</span><span id="tickerVal">2,500</span></div>
+        <div class="ticker-sub" data-t="ticker_sub">minimum sourcing order</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div class="ticker-label" data-t="ticker_save">You Save vs. Local</div>
+        <div class="ticker-rate" style="color:#176b3a"><span class="curr-sym" id="saveSym" style="color:#176b3a">$</span><span id="saveVal">1,200</span></div>
+        <div id="rateStatus" class="ticker-loading">Loading live rate…</div>
+      </div>
+    </div>
+
+    <div class="pills">
+      <div class="pill" data-t="pill1">🏭 Factory Audits Included</div>
+      <div class="pill" data-t="pill2">📦 Door-to-Door Shipping</div>
+      <div class="pill" data-t="pill3">💰 No Hidden Fees</div>
+      <div class="pill" data-t="pill4">🔒 Secure Payments</div>
+      <div class="pill" data-t="pill5">🇨🇳 Yiwu &amp; Guangzhou</div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-badge"><div class="trust-num">500<span>+</span></div><div class="trust-label" data-t="badge1">Shipments</div></div>
+      <div class="trust-badge"><div class="trust-num">98<span>%</span></div><div class="trust-label" data-t="badge2">Retention</div></div>
+      <div class="trust-badge"><div class="trust-num">6<span>+</span></div><div class="trust-label" data-t="badge3">Yrs in China</div></div>
+      <div class="trust-badge"><div class="trust-num">4.9<span>/5</span></div><div class="trust-label" data-t="badge4">Rating</div></div>
+    </div>
+
+    <div class="cta-row">
+      <button class="btn-primary" data-t="cta_start">Start Sourcing Now →</button>
+      <button class="btn-secondary" data-t="cta_how">How It Works</button>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="deck" id="deck">
+      <div class="deck-card" data-index="0">
+        <div class="card-img-area" style="background:linear-gradient(135deg,#fff5f5,#ffd5d0)">🏢</div>
+        <div class="card-body">
+          <div class="card-tag red" data-t="c1tag">Our Edge</div>
+          <div class="card-title" data-t="c1title">Real Team in China</div>
+          <div class="card-desc" data-t="c1desc">Our staff in Yiwu and Guangzhou visit factories in person, verify quality, and negotiate prices you can't get remotely.</div>
+        </div>
+      </div>
+      <div class="deck-card" data-index="1">
+        <div class="card-img-area" style="background:linear-gradient(135deg,#fffbe6,#fff0a0)">🤝</div>
+        <div class="card-body">
+          <div class="card-tag yellow" data-t="c2tag">Proven Record</div>
+          <div class="card-title" data-t="c2title">Pakistan to Gulf Clients</div>
+          <div class="card-desc" data-t="c2desc">From Lahore to Dubai, our clients return again and again. Verified reviews and real shipment records — no stock testimonials.</div>
+        </div>
+      </div>
+      <div class="deck-card" data-index="2">
+        <div class="card-img-area" style="background:linear-gradient(135deg,#f0fff5,#c8f5d8)">🛡️</div>
+        <div class="card-body">
+          <div class="card-tag red" data-t="c3tag">Zero Risk</div>
+          <div class="card-title" data-t="c3title">Money Protected Always</div>
+          <div class="card-desc" data-t="c3desc">We hold payments in escrow, inspect every order before dispatch, and send photo proof. Full payment only after your approval.</div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="arr-btn" id="prevBtn">&#8592;</button>
+      <div class="deck-dots" id="deckDots">
+        <div class="ddot active"></div><div class="ddot"></div><div class="ddot"></div>
+      </div>
+      <button class="arr-btn" id="nextBtn">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+var T={
+  en:{dir:'ltr',flag:'🇬🇧',code:'EN',nav_home:'Home',nav_services:'Services',nav_how:'How It Works',nav_team:'Our Team',nav_pricing:'Pricing',nav_contact:'Contact',cta_quote:'Get a Free Quote',cta_start:'Start Sourcing Now →',cta_how:'How It Works',eyebrow:"China's #1 Sourcing Partner for Pakistan & Gulf",h1_line1:'Source from China.',h1_line2:'Smarter.',h1_line3:' Faster.',h1_line4:'Risk-Free.',subtitle:'We eliminate the guesswork of importing from China — with a real team on the ground in Yiwu and Guangzhou, verified factories, and end-to-end logistics handled for you.',ticker_label:'Avg. Order Value',ticker_sub:'minimum sourcing order',ticker_save:'You Save vs. Local',pill1:'🏭 Factory Audits Included',pill2:'📦 Door-to-Door Shipping',pill3:'💰 No Hidden Fees',pill4:'🔒 Secure Payments',pill5:'🇨🇳 Yiwu & Guangzhou',badge1:'Shipments',badge2:'Retention',badge3:'Yrs in China',badge4:'Rating',c1tag:'Our Edge',c1title:'Real Team in China',c1desc:"Our staff in Yiwu and Guangzhou visit factories in person, verify quality, and negotiate prices you can't get remotely.",c2tag:'Proven Record',c2title:'Pakistan to Gulf Clients',c2desc:'From Lahore to Dubai, our clients return again and again. Verified reviews and real shipment records.',c3tag:'Zero Risk',c3title:'Money Protected Always',c3desc:'We hold payments in escrow, inspect every order before dispatch, and send photo proof.',notice:'We detected your region. Translate?',noticeBtn:'Translate'},
+  ur:{dir:'rtl',flag:'🇵🇰',code:'UR',nav_home:'ہوم',nav_services:'خدمات',nav_how:'طریقہ کار',nav_team:'ہماری ٹیم',nav_pricing:'قیمتیں',nav_contact:'رابطہ',cta_quote:'مفت کوٹ حاصل کریں',cta_start:'ابھی شروع کریں ←',cta_how:'طریقہ دیکھیں',eyebrow:'پاکستان اور خلیج کے لیے چین کا نمبر 1 پارٹنر',h1_line1:'چین سے درآمد کریں۔',h1_line2:'سمارٹ طریقے سے۔',h1_line3:' تیزی سے۔',h1_line4:'بالکل محفوظ۔',subtitle:'ہم چین سے درآمد کی پیچیدگیوں کو ختم کرتے ہیں۔ یووو اور گوانگژو میں ہماری اپنی ٹیم، تصدیق شدہ فیکٹریاں اور مکمل لاجسٹکس۔',ticker_label:'اوسط آرڈر قیمت',ticker_sub:'کم سے کم آرڈر',ticker_save:'مقامی کے مقابلے بچت',pill1:'🏭 فیکٹری آڈٹ شامل',pill2:'📦 دروازے سے دروازے تک',pill3:'💰 کوئی پوشیدہ فیس نہیں',pill4:'🔒 محفوظ ادائیگی',pill5:'🇨🇳 یووو اور گوانگژو',badge1:'شپمنٹس',badge2:'برقراری',badge3:'سال چین میں',badge4:'ریٹنگ',c1tag:'ہماری خاصیت',c1title:'چین میں حقیقی ٹیم',c1desc:'ہماری ٹیم خود فیکٹریوں کا دورہ کرتی، معیار جانچتی اور بہترین قیمت مذاکرہ کرتی ہے۔',c2tag:'ثابت شدہ ریکارڈ',c2title:'پاکستان سے خلیج تک',c2desc:'لاہور سے دبئی تک ہمارے کلائنٹس بار بار واپس آتے ہیں۔',c3tag:'صفر خطرہ',c3title:'آپ کی منظوری تک محفوظ',c3desc:'ادائیگیاں ایسکرو میں، روانگی سے پہلے معائنہ، فوٹو ثبوت۔',notice:'آپ کا علاقہ ملا۔ اردو میں ترجمہ کریں؟',noticeBtn:'ترجمہ کریں'},
+  ar:{dir:'rtl',flag:'🇦🇪',code:'AR',nav_home:'الرئيسية',nav_services:'الخدمات',nav_how:'كيف يعمل',nav_team:'فريقنا',nav_pricing:'الأسعار',nav_contact:'اتصل بنا',cta_quote:'احصل على عرض مجاني',cta_start:'ابدأ الآن ←',cta_how:'اكتشف كيف يعمل',eyebrow:'شريك الاستيراد رقم 1 من الصين للخليج',h1_line1:'استورد من الصين.',h1_line2:'بذكاء.',h1_line3:' وسرعة.',h1_line4:'بلا مخاطر.',subtitle:'نبسّط عملية الاستيراد من الصين مع فريق حقيقي في يوو وغوانغتشو ومصانع موثّقة وإدارة كاملة للخدمات اللوجستية.',ticker_label:'متوسط قيمة الطلب',ticker_sub:'الحد الأدنى للطلب',ticker_save:'توفيرك مقارنة بالمحلي',pill1:'🏭 تدقيق المصانع مشمول',pill2:'📦 شحن من الباب للباب',pill3:'💰 لا رسوم خفية',pill4:'🔒 مدفوعات آمنة',pill5:'🇨🇳 يوو وغوانغتشو',badge1:'شحنات',badge2:'الاحتفاظ',badge3:'سنوات في الصين',badge4:'التقييم',c1tag:'ميزتنا',c1title:'فريق حقيقي في الصين',c1desc:'يزور موظفونا المصانع شخصياً ويتحققون من الجودة ويتفاوضون على أسعار لا تستطيع الحصول عليها عن بُعد.',c2tag:'سجل مثبت',c2title:'من باكستان إلى الخليج',c2desc:'من لاهور إلى دبي، يعود عملاؤنا مراراً وتكراراً.',c3tag:'صفر مخاطر',c3title:'أموالك محمية دائماً',c3desc:'نحتفظ بالمدفوعات في الضمان ونفتش كل طلب ونرسل دليلاً بالصور.',notice:'رصدنا منطقتك. ترجمة إلى العربية؟',noticeBtn:'ترجمة'},
+  zh:{dir:'ltr',flag:'🇨🇳',code:'ZH',nav_home:'首页',nav_services:'服务',nav_how:'流程',nav_team:'团队',nav_pricing:'价格',nav_contact:'联系我们',cta_quote:'获取免费报价',cta_start:'立即开始采购 →',cta_how:'了解流程',eyebrow:'巴基斯坦与海湾地区第一采购合作伙伴',h1_line1:'从中国采购。',h1_line2:'更智能。',h1_line3:' 更快速。',h1_line4:'零风险。',subtitle:'我们为您消除从中国进口的不确定性，在义乌和广州拥有真实团队、已验证工厂，全程物流为您处理。',ticker_label:'平均订单金额',ticker_sub:'最低采购额',ticker_save:'比本地节省',pill1:'🏭 工厂审计包含在内',pill2:'📦 门到门运输',pill3:'💰 无隐藏费用',pill4:'🔒 安全付款',pill5:'🇨🇳 义乌和广州',badge1:'已完成货运',badge2:'客户留存',badge3:'在华年限',badge4:'评分',c1tag:'我们的优势',c1title:'中国真实团队',c1desc:'我们的员工亲自到访工厂、验货，并谈判您远程无法获得的价格。',c2tag:'经验证记录',c2title:'巴基斯坦到海湾的客户',c2desc:'从拉合尔到迪拜，客户不断回来。经过验证的评价和真实货运记录。',c3tag:'零风险',c3title:'货款始终受到保护',c3desc:'我们将款项托管，发货前检验每笔订单，并发送照片证明。',notice:'检测到您的地区。翻译为中文？',noticeBtn:'翻译'}
+};
+var CURR={USD:{sym:'$',base:1},PKR:{sym:'₨',base:280},AED:{sym:'د.إ',base:3.67},SAR:{sym:'﷼',base:3.75},CNY:{sym:'¥',base:7.25},GBP:{sym:'£',base:0.79}};
+var BASE_ORDER=2500,BASE_SAVE=1200,rates=JSON.parse(JSON.stringify(CURR)),activeCurr='USD',activeLang='en';
+var locale=(navigator.language||'en').toLowerCase();
+var autoLang='en',autoCurr='USD';
+if(locale.startsWith('ur')||locale.includes('pk')){autoLang='ur';autoCurr='PKR';}
+else if(locale.startsWith('ar')){autoLang='ar';autoCurr='AED';}
+else if(locale.startsWith('zh')){autoLang='zh';autoCurr='CNY';}
+else if(locale.includes('sa')){autoLang='ar';autoCurr='SAR';}
+else if(locale.includes('gb')){autoCurr='GBP';}
+
+function applyLang(lang){
+  activeLang=lang;var t=T[lang];
+  document.documentElement.setAttribute('dir',t.dir);document.documentElement.setAttribute('lang',lang);
+  document.querySelectorAll('[data-t]').forEach(function(el){var k=el.getAttribute('data-t');if(t[k]!==undefined)el.innerHTML=t[k];});
+  document.getElementById('langFlag').textContent=t.flag;document.getElementById('langCode').textContent=t.code;
+  document.querySelectorAll('#langDrop .sel-item').forEach(function(it){
+    it.classList.toggle('active',it.dataset.lang===lang);
+    var b=it.querySelector('.auto-badge');if(b)b.remove();
+    if(it.dataset.lang===autoLang){var nb=document.createElement('span');nb.className='auto-badge';nb.textContent='AUTO';it.appendChild(nb);}
+  });
+  document.getElementById('langNotice').style.display='none';
+}
+function applyCurr(code){
+  activeCurr=code;var r=rates[code]||CURR[code],sym=CURR[code].sym;
+  var ov=Math.round(BASE_ORDER*r.base),sv=Math.round(BASE_SAVE*r.base);
+  function fmt(n){return n>=1000?n.toLocaleString():String(n);}
+  document.getElementById('tickerSym').textContent=sym;document.getElementById('tickerVal').textContent=fmt(ov);
+  document.getElementById('saveSym').textContent=sym;document.getElementById('saveVal').textContent=fmt(sv);
+  document.getElementById('currIcon').textContent=sym;document.getElementById('currCode').textContent=code;
+  document.querySelectorAll('#currDrop .sel-item').forEach(function(it){
+    it.classList.toggle('active',it.dataset.curr===code);
+    var b=it.querySelector('.auto-badge');if(b)b.remove();
+    if(it.dataset.curr===autoCurr){var nb=document.createElement('span');nb.className='auto-badge';nb.textContent='AUTO';it.appendChild(nb);}
+  });
+}
+function fetchRates(){
+  fetch('https://api.exchangerate-api.com/v4/latest/USD').then(function(r){return r.json();}).then(function(d){
+    if(d&&d.rates){Object.keys(CURR).forEach(function(c){if(d.rates[c])rates[c]={sym:CURR[c].sym,base:d.rates[c]};});}
+    document.getElementById('rateStatus').innerHTML='<span class="ticker-live">LIVE</span> Updated now';
+    applyCurr(activeCurr);
+  }).catch(function(){document.getElementById('rateStatus').textContent='Approx. rates';});
+}
+function setupDrop(btnId,dropId){
+  var btn=document.getElementById(btnId),drop=document.getElementById(dropId);
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();var o=drop.classList.contains('open');
+    document.querySelectorAll('.sel-dropdown').forEach(function(d){d.classList.remove('open');});
+    document.querySelectorAll('.sel-btn').forEach(function(b){b.classList.remove('open');});
+    if(!o){drop.classList.add('open');btn.classList.add('open');}
+  });
+}
+document.addEventListener('click',function(){
+  document.querySelectorAll('.sel-dropdown').forEach(function(d){d.classList.remove('open');});
+  document.querySelectorAll('.sel-btn').forEach(function(b){b.classList.remove('open');});
+});
+setupDrop('langBtn','langDrop');setupDrop('currBtn','currDrop');
+document.querySelectorAll('#langDrop .sel-item').forEach(function(it){it.addEventListener('click',function(){applyLang(it.dataset.lang);document.getElementById('langDrop').classList.remove('open');document.getElementById('langBtn').classList.remove('open');});});
+document.querySelectorAll('#currDrop .sel-item').forEach(function(it){it.addEventListener('click',function(){applyCurr(it.dataset.curr);document.getElementById('currDrop').classList.remove('open');document.getElementById('currBtn').classList.remove('open');});});
+if(autoLang!=='en'){
+  var nt=T[autoLang];
+  document.getElementById('langNotice').style.display='flex';
+  document.getElementById('langNoticeText').textContent=nt.notice;
+  document.getElementById('langNoticeBtn').textContent=nt.noticeBtn;
+  document.getElementById('langNoticeBtn').addEventListener('click',function(){applyLang(autoLang);applyCurr(autoCurr);});
+}
+applyLang('en');applyCurr(autoCurr);fetchRates();
+
+var cards=Array.from(document.querySelectorAll('.deck-card')),dots=Array.from(document.querySelectorAll('.ddot')),cur=0,total=cards.length,timer;
+function layout(a){
+  cards.forEach(function(c,i){
+    var o=(i-a+total)%total,z,ty,sc,op,rot;
+    if(o===0){z=30;ty=0;sc=1;op=1;rot=0;}
+    else if(o===1){z=20;ty=18;sc=0.93;op=0.85;rot=2;}
+    else if(o===2){z=10;ty=32;sc=0.86;op=0.55;rot=-2;}
+    else{z=0;ty=44;sc=0.80;op=0;rot=0;}
+    c.style.zIndex=z;c.style.transform='translateY('+ty+'px) scale('+sc+') rotate('+rot+'deg)';c.style.opacity=op;c.style.pointerEvents=o===0?'auto':'none';
+  });
+  dots.forEach(function(d,i){d.classList.toggle('active',i===a);});
+}
+function goTo(n){cur=(n+total)%total;layout(cur);}
+function startAuto(){timer=setInterval(function(){goTo(cur+1);},3200);}
+function stopAuto(){clearInterval(timer);}
+document.getElementById('nextBtn').addEventListener('click',function(){stopAuto();goTo(cur+1);startAuto();});
+document.getElementById('prevBtn').addEventListener('click',function(){stopAuto();goTo(cur-1);startAuto();});
+dots.forEach(function(d,i){d.addEventListener('click',function(){stopAuto();goTo(i);startAuto();});});
+var deck=document.getElementById('deck');
+deck.addEventListener('mouseenter',stopAuto);deck.addEventListener('mouseleave',startAuto);
+var tx=null;
+deck.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;stopAuto();},{passive:true});
+deck.addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?goTo(cur+1):goTo(cur-1);}tx=null;startAuto();},{passive:true});
+layout(cur);startAuto();
+})();
+</script>
+</body>
+</html>
