@@ -651,7 +651,7 @@ h1{
 .check.warn{background:#fff8e6;color:#b07700}
 .ezy-val{
   font-family:var(--font-display);font-size:14px;font-weight:800;
-  color:var(--red);letter-spacing:.3px;
+  color:var(--black);letter-spacing:.3px;
 }
 .solo-val{
   font-family:var(--font-body);font-size:13px;color:#999;
@@ -873,6 +873,96 @@ h1{
   </div>
 </section>
 
+<!-- CONTACT / ENQUIRY FORM -->
+<section class="contact-section">
+  <div class="contact-header">
+    <div class="contact-eyebrow"><span class="eyebrow-dot"></span> Send an Enquiry</div>
+    <div class="contact-title">Tell Us What<br>You <span>Need</span></div>
+    <p class="contact-subtitle">Fill in your details and our team will respond within a few hours via WhatsApp or email.</p>
+  </div>
+
+  <div class="contact-card">
+    <div id="contactForm">
+      <div class="form-grid">
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="f-name">
+            Full Name <span class="opt">Optional</span>
+          </label>
+          <input class="form-input" type="text" id="f-name" placeholder="e.g. Ali Hassan" autocomplete="name"/>
+        </div>
+
+        <!-- Mobile Number (Mandatory) -->
+        <div class="form-group">
+          <label class="form-label" for="f-mobile">
+            Mobile Number <span class="req">*</span>
+          </label>
+          <input class="form-input required-field" type="tel" id="f-mobile" placeholder="+92 300 0000000" autocomplete="tel"/>
+          <span class="field-error" id="f-mobile-err">Please enter your mobile number.</span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group full">
+          <label class="form-label" for="f-email">
+            Email Address <span class="opt">Optional</span>
+          </label>
+          <input class="form-input" type="email" id="f-email" placeholder="you@example.com" autocomplete="email"/>
+        </div>
+
+        <!-- Describe Product -->
+        <div class="form-group full">
+          <label class="form-label" for="f-product">
+            Describe Product <span class="opt">Optional</span>
+          </label>
+          <textarea class="form-textarea" id="f-product" placeholder="e.g. Stainless steel water bottles, 500ml, screw-top lid, no branding needed…"></textarea>
+        </div>
+
+        <!-- Quantity -->
+        <div class="form-group">
+          <label class="form-label" for="f-qty">
+            Quantity <span class="opt">Optional</span>
+          </label>
+          <input class="form-input" type="text" id="f-qty" placeholder="e.g. 500 units"/>
+        </div>
+
+      </div><!-- /form-grid -->
+
+      <div class="form-submit">
+        <button class="btn-submit" id="submitBtn" type="button">
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          Send Enquiry
+        </button>
+        <div class="form-note">
+          <span class="form-note-icon">🔒</span>
+          <span>Your details are never shared. We'll reach out on WhatsApp or email — usually within a few hours.</span>
+        </div>
+      </div>
+    </div><!-- /contactForm -->
+
+    <!-- Success State -->
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">✅</div>
+      <div class="form-success-title">Enquiry Sent!</div>
+      <p class="form-success-msg">Thanks! Our team will be in touch on <strong>WhatsApp</strong> or email shortly.<br>We typically respond within a few hours.</p>
+    </div>
+
+  </div><!-- /contact-card -->
+</section>
+
+<!-- ========== PRODUCT SHOWCASE ========== -->
+<section class="showcase-section">
+  <div class="showcase-header">
+    <div class="showcase-eyebrow"><span class="eyebrow-dot"></span> What We Source</div>
+    <div class="showcase-title">Browse Our <span>Categories</span></div>
+    <p class="showcase-subtitle">Tap any category to explore 20+ curated products — with factory pricing, MOQ, and direct sourcing from Yiwu &amp; Guangzhou.</p>
+  </div>
+
+  <div class="cat-grid" id="catGrid">
+    <!-- Categories injected by JS -->
+  </div>
+</section>
+
 <!-- ========== WHY EZYCHINADIRECT ========== -->
 <section class="why-section">
   <div class="why-header">
@@ -971,96 +1061,6 @@ h1{
         <div class="step-desc">Goods arrive at your address in Pakistan or the Gulf — tracked, insured, and on time. You only pay in full once satisfied.</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CONTACT / ENQUIRY FORM -->
-<section class="contact-section">
-  <div class="contact-header">
-    <div class="contact-eyebrow"><span class="eyebrow-dot"></span> Send an Enquiry</div>
-    <div class="contact-title">Tell Us What<br>You <span>Need</span></div>
-    <p class="contact-subtitle">Fill in your details and our team will respond within a few hours via WhatsApp or email.</p>
-  </div>
-
-  <div class="contact-card">
-    <div id="contactForm">
-      <div class="form-grid">
-
-        <!-- Full Name -->
-        <div class="form-group">
-          <label class="form-label" for="f-name">
-            Full Name <span class="opt">Optional</span>
-          </label>
-          <input class="form-input" type="text" id="f-name" placeholder="e.g. Ali Hassan" autocomplete="name"/>
-        </div>
-
-        <!-- Mobile Number (Mandatory) -->
-        <div class="form-group">
-          <label class="form-label" for="f-mobile">
-            Mobile Number <span class="req">*</span>
-          </label>
-          <input class="form-input required-field" type="tel" id="f-mobile" placeholder="+92 300 0000000" autocomplete="tel"/>
-          <span class="field-error" id="f-mobile-err">Please enter your mobile number.</span>
-        </div>
-
-        <!-- Email -->
-        <div class="form-group full">
-          <label class="form-label" for="f-email">
-            Email Address <span class="opt">Optional</span>
-          </label>
-          <input class="form-input" type="email" id="f-email" placeholder="you@example.com" autocomplete="email"/>
-        </div>
-
-        <!-- Describe Product -->
-        <div class="form-group full">
-          <label class="form-label" for="f-product">
-            Describe Product <span class="opt">Optional</span>
-          </label>
-          <textarea class="form-textarea" id="f-product" placeholder="e.g. Stainless steel water bottles, 500ml, screw-top lid, no branding needed…"></textarea>
-        </div>
-
-        <!-- Quantity -->
-        <div class="form-group">
-          <label class="form-label" for="f-qty">
-            Quantity <span class="opt">Optional</span>
-          </label>
-          <input class="form-input" type="text" id="f-qty" placeholder="e.g. 500 units"/>
-        </div>
-
-      </div><!-- /form-grid -->
-
-      <div class="form-submit">
-        <button class="btn-submit" id="submitBtn" type="button">
-          <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
-          Send Enquiry
-        </button>
-        <div class="form-note">
-          <span class="form-note-icon">🔒</span>
-          <span>Your details are never shared. We'll reach out on WhatsApp or email — usually within a few hours.</span>
-        </div>
-      </div>
-    </div><!-- /contactForm -->
-
-    <!-- Success State -->
-    <div class="form-success" id="formSuccess">
-      <div class="form-success-icon">✅</div>
-      <div class="form-success-title">Enquiry Sent!</div>
-      <p class="form-success-msg">Thanks! Our team will be in touch on <strong>WhatsApp</strong> or email shortly.<br>We typically respond within a few hours.</p>
-    </div>
-
-  </div><!-- /contact-card -->
-</section>
-
-<!-- ========== PRODUCT SHOWCASE ========== -->
-<section class="showcase-section">
-  <div class="showcase-header">
-    <div class="showcase-eyebrow"><span class="eyebrow-dot"></span> What We Source</div>
-    <div class="showcase-title">Browse Our <span>Categories</span></div>
-    <p class="showcase-subtitle">Tap any category to explore 20+ curated products — with factory pricing, MOQ, and direct sourcing from Yiwu &amp; Guangzhou.</p>
-  </div>
-
-  <div class="cat-grid" id="catGrid">
-    <!-- Categories injected by JS -->
   </div>
 </section>
 
@@ -1283,28 +1283,35 @@ var CATEGORIES = [
     icon:'💡',
     color:'#ebf4ff',
     accent:'#1d4ed8',
-    preview:['💡','🖨️','⌨️','🖱️','📡','🔦'],
+    preview:[
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/AI%20voice%20assistants.jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Bluetooth%20speakers.jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Gaming%20controllers.jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Mini%20projector.jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Smartwatch%20(premium%20style).jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/TWS%20earbuds.jpg'
+    ],
     products:[
-      {name:'LED Smart Bulb E27 RGB 9W',price:'$1.60',moq:'200 pcs',emoji:'💡'},
-      {name:'Mechanical Keyboard TKL Blue Switch',price:'$14.80',moq:'50 pcs',emoji:'⌨️'},
-      {name:'Wireless Mouse 2.4G Ergonomic',price:'$3.80',moq:'150 pcs',emoji:'🖱️'},
-      {name:'Mini Thermal Label Printer BT',price:'$18.40',moq:'30 pcs',emoji:'🖨️'},
-      {name:'Security Camera IP 1080P WiFi',price:'$9.60',moq:'30 pcs',emoji:'📷'},
-      {name:'Solar Powered Garden Light 6-pack',price:'$11.20',moq:'50 pcs',emoji:'🌞'},
-      {name:'Smart Plug WiFi Energy Monitor',price:'$4.20',moq:'100 pcs',emoji:'🔌'},
-      {name:'Raspberry Pi Clone Dev Board',price:'$7.40',moq:'50 pcs',emoji:'💻'},
-      {name:'Mini Projector 1080P Portable',price:'$36.00',moq:'20 pcs',emoji:'📽️'},
-      {name:'Digital Photo Frame 10" IPS WiFi',price:'$22.00',moq:'20 pcs',emoji:'🖼️'},
-      {name:'Noise Cancelling Headphones BT5',price:'$12.80',moq:'50 pcs',emoji:'🎧'},
-      {name:'Retractable Selfie Stick Tripod',price:'$3.60',moq:'200 pcs',emoji:'🤳'},
-      {name:'Bluetooth Speaker Waterproof IPX6',price:'$8.40',moq:'50 pcs',emoji:'🔊'},
-      {name:'LED Strip Lights 5m RGB Smart',price:'$4.80',moq:'100 pcs',emoji:'🌈'},
-      {name:'USB Desk Fan Bladeless Style',price:'$6.20',moq:'100 pcs',emoji:'💨'},
-      {name:'Barcode Scanner 1D 2D QR USB',price:'$11.60',moq:'30 pcs',emoji:'📊'},
-      {name:'Portable Bluetooth Keyboard Slim',price:'$7.80',moq:'100 pcs',emoji:'⌨️'},
-      {name:'AA Battery Rechargeable Set 4pc',price:'$4.40',moq:'100 pcs',emoji:'🔋'},
-      {name:'HDMI to VGA Adapter Full HD',price:'$1.80',moq:'300 pcs',emoji:'🖥️'},
-      {name:'Smart Watch Fitness Tracker IP68',price:'$11.20',moq:'50 pcs',emoji:'⌚'}
+      {name:'AI Voice Assistants',price:'$8.40',moq:'50 pcs',emoji:'🤖',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/AI%20voice%20assistants.jpg'},
+      {name:'Android Tablet Devices',price:'$22.00',moq:'20 pcs',emoji:'📱',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Android%20Tablet%20devices.jpg'},
+      {name:'Bluetooth Speakers',price:'$7.60',moq:'50 pcs',emoji:'🔊',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Bluetooth%20speakers.jpg'},
+      {name:'Car Android Dashboard Panel',price:'$18.80',moq:'20 pcs',emoji:'🚗',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Car%20Android%20dashboard%20panel.jpg'},
+      {name:'Dash Cams',price:'$11.60',moq:'30 pcs',emoji:'📷',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Dash%20cams.jpg'},
+      {name:'Gaming Controllers',price:'$9.20',moq:'50 pcs',emoji:'🎮',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Gaming%20controllers.jpg'},
+      {name:'LED Ring Lights',price:'$4.80',moq:'100 pcs',emoji:'💡',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/LED%20ring%20lights.jpg'},
+      {name:'Mini Projector',price:'$36.00',moq:'20 pcs',emoji:'📽️',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Mini%20projector.jpg'},
+      {name:'Portable Monitors',price:'$44.00',moq:'10 pcs',emoji:'🖥️',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Portable%20monitors.jpg'},
+      {name:'Power Banks',price:'$8.20',moq:'100 pcs',emoji:'🔋',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Power%20banks.jpg'},
+      {name:'RGB Gaming Keyboard + Mouse',price:'$14.80',moq:'50 pcs',emoji:'⌨️',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/RGB%20gaming%20keyboard%20%2B%20mouse.jpg'},
+      {name:'Smart Glasses',price:'$28.00',moq:'20 pcs',emoji:'🕶️',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Smart%20glasses.jpg'},
+      {name:'Smart Home Hubs',price:'$16.40',moq:'30 pcs',emoji:'🏠',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Smart%20home%20hubs.jpg'},
+      {name:'Smartwatch Premium Style',price:'$18.60',moq:'30 pcs',emoji:'⌚',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Smartwatch%20(premium%20style).jpg'},
+      {name:'Spy Cameras',price:'$12.80',moq:'30 pcs',emoji:'📷',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Spy%20cameras.jpg'},
+      {name:'Streaming Sticks',price:'$9.60',moq:'50 pcs',emoji:'📺',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Streaming%20sticks.jpg'},
+      {name:'TWS Earbuds',price:'$6.50',moq:'100 pcs',emoji:'🎧',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/TWS%20earbuds.jpg'},
+      {name:'USB Hubs',price:'$3.40',moq:'150 pcs',emoji:'🔌',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/USB%20hubs.jpg'},
+      {name:'VR Headsets',price:'$32.00',moq:'10 pcs',emoji:'🥽',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/VR%20headsets.jpg'},
+      {name:'Wireless Chargers',price:'$4.20',moq:'200 pcs',emoji:'⚡',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/Consumer%20Electronics/Wireless%20chargers.jpg'}
     ]
   },
   {
@@ -1385,7 +1392,12 @@ CATEGORIES.forEach(function(cat){
   // Preview grid (6 items)
   var prev = '<div class="cat-preview">';
   for(var i=0;i<6;i++){
-    prev += '<div class="preview-thumb"><span class="thumb-fallback">'+cat.preview[i]+'</span></div>';
+    var pItem = cat.preview[i];
+    if(typeof pItem === 'string' && pItem.startsWith('http')){
+      prev += '<div class="preview-thumb"><img src="'+pItem+'" alt="" loading="lazy" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'"/><span class="thumb-fallback" style="display:none">📷</span></div>';
+    } else {
+      prev += '<div class="preview-thumb"><span class="thumb-fallback">'+pItem+'</span></div>';
+    }
   }
   prev += '</div>';
 
@@ -1424,8 +1436,11 @@ function openOverlay(catId){
   cat.products.forEach(function(p){
     var card = document.createElement('div');
     card.className = 'product-card';
+    var thumbContent = p.img
+      ? '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'block\'"/><span class="p-fallback" style="display:none">'+p.emoji+'</span>'
+      : '<span class="p-fallback">'+p.emoji+'</span>';
     card.innerHTML =
-      '<div class="product-thumb"><span class="p-fallback">'+p.emoji+'</span></div>'+
+      '<div class="product-thumb">'+thumbContent+'</div>'+
       '<div class="product-info">'+
         '<div class="product-name">'+p.name+'</div>'+
         '<div class="product-meta">'+
