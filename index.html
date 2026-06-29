@@ -274,6 +274,192 @@ h1{
   .btn-submit{justify-content:center}
 }
 
+/* ========== FLOATING WHATSAPP BUTTON ========== */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:56px;height:56px;border-radius:50%;
+  background:#25D366;
+  box-shadow:0 4px 20px rgba(37,211,102,.45),0 2px 8px rgba(0,0,0,.15);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;text-decoration:none;
+  transition:transform .25s cubic-bezier(.34,1.4,.64,1),box-shadow .25s;
+  animation:waPulse 3s ease-in-out infinite;
+}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 8px 30px rgba(37,211,102,.55),0 3px 12px rgba(0,0,0,.18)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+@keyframes waPulse{
+  0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.4)}
+  50%{box-shadow:0 4px 20px rgba(37,211,102,.45),0 0 0 10px rgba(37,211,102,0)}
+}
+.wa-float-tooltip{
+  position:absolute;right:68px;top:50%;transform:translateY(-50%);
+  background:#111;color:#fff;
+  font-family:var(--font-body);font-size:12px;font-weight:600;
+  white-space:nowrap;border-radius:8px;padding:6px 11px;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s,transform .2s;
+  transform:translateY(-50%) translateX(4px);
+}
+.wa-float-tooltip::after{
+  content:'';position:absolute;left:100%;top:50%;transform:translateY(-50%);
+  border:5px solid transparent;border-left-color:#111;
+}
+.wa-float:hover .wa-float-tooltip{opacity:1;transform:translateY(-50%) translateX(0)}
+
+/* ========== CONTACT INFO SECTION ========== */
+.contact-info-section{
+  background:linear-gradient(135deg,#0f0f0f 0%,#1a0505 50%,#0f0f0f 100%);
+  padding:72px 24px 80px;
+  margin-top:0;
+}
+.contact-info-inner{
+  max-width:1100px;margin:0 auto;
+}
+.contact-info-header{
+  text-align:center;margin-bottom:52px;
+}
+.contact-info-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(222,41,16,.15);border:1px solid rgba(222,41,16,.3);
+  border-radius:50px;padding:5px 14px;
+  font-family:var(--font-body);font-size:11.5px;font-weight:600;
+  color:#ff6b6b;letter-spacing:.5px;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.contact-info-title{
+  font-family:var(--font-display);
+  font-size:clamp(32px,4vw,52px);
+  font-weight:900;text-transform:uppercase;
+  letter-spacing:.5px;line-height:1;
+  color:#fff;margin-bottom:10px;
+}
+.contact-info-title span{color:var(--red)}
+.contact-info-subtitle{
+  font-family:var(--font-body);font-size:14px;
+  color:rgba(255,255,255,.55);line-height:1.6;
+  max-width:480px;margin:0 auto;
+}
+.contact-info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:20px;
+  margin-bottom:40px;
+}
+.cinfo-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  padding:28px 24px;
+  transition:background .2s,border-color .2s,transform .25s;
+  text-decoration:none;display:block;
+}
+.cinfo-card:hover{
+  background:rgba(255,255,255,.09);
+  border-color:rgba(222,41,16,.4);
+  transform:translateY(-3px);
+}
+.cinfo-card-link{cursor:pointer}
+.cinfo-icon-wrap{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;flex-shrink:0;
+}
+.cinfo-icon-wrap.wa{background:rgba(37,211,102,.15)}
+.cinfo-icon-wrap.email{background:rgba(222,41,16,.12)}
+.cinfo-icon-wrap.office{background:rgba(255,222,0,.1)}
+.cinfo-icon-wrap svg{width:24px;height:24px}
+.cinfo-label{
+  font-family:var(--font-body);font-size:10.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.8px;
+  color:rgba(255,255,255,.4);margin-bottom:6px;
+}
+.cinfo-value{
+  font-family:var(--font-display);font-size:22px;font-weight:900;
+  color:#fff;letter-spacing:.3px;line-height:1.1;margin-bottom:5px;
+}
+.cinfo-sub{
+  font-family:var(--font-body);font-size:12px;
+  color:rgba(255,255,255,.45);line-height:1.5;
+}
+.cinfo-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.3);
+  border-radius:50px;padding:3px 10px;
+  font-family:var(--font-body);font-size:10px;font-weight:700;
+  color:#4ade80;letter-spacing:.3px;margin-top:10px;
+}
+.cinfo-chip.email-chip{background:rgba(222,41,16,.12);border-color:rgba(222,41,16,.25);color:#ff9090}
+.cinfo-chip.office-chip{background:rgba(255,222,0,.1);border-color:rgba(255,222,0,.25);color:#ffe066}
+
+.offices-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.office-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:22px 24px;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.office-flag{font-size:28px;flex-shrink:0;line-height:1;margin-top:2px}
+.office-city{
+  font-family:var(--font-display);font-size:20px;font-weight:900;
+  text-transform:uppercase;color:#fff;letter-spacing:.4px;margin-bottom:3px;
+}
+.office-detail{
+  font-family:var(--font-body);font-size:12.5px;
+  color:rgba(255,255,255,.45);line-height:1.6;
+}
+.office-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  background:rgba(222,41,16,.15);border:1px solid rgba(222,41,16,.25);
+  border-radius:5px;padding:2px 8px;
+  font-family:var(--font-body);font-size:9.5px;font-weight:700;
+  color:#ff7070;text-transform:uppercase;letter-spacing:.4px;margin-top:8px;
+}
+
+.contact-info-divider{
+  border:none;border-top:1px solid rgba(255,255,255,.07);
+  margin:40px 0 32px;
+}
+.contact-info-footer-row{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.contact-footer-brand{
+  display:flex;align-items:center;gap:10px;
+}
+.contact-footer-dot{
+  width:10px;height:10px;background:var(--red);border-radius:50%;
+  animation:pulse 2s infinite;flex-shrink:0;
+}
+.contact-footer-name{
+  font-family:var(--font-display);font-size:18px;font-weight:900;
+  text-transform:uppercase;letter-spacing:.5px;color:#fff;
+}
+.contact-footer-name span{color:var(--red)}
+.contact-footer-copy{
+  font-family:var(--font-body);font-size:12px;
+  color:rgba(255,255,255,.3);
+}
+
+@media(max-width:900px){
+  .contact-info-grid{grid-template-columns:1fr 1fr}
+  .offices-row{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .contact-info-grid{grid-template-columns:1fr}
+  .contact-info-footer-row{flex-direction:column;align-items:flex-start}
+  .wa-float{bottom:20px;right:20px;width:50px;height:50px}
+  .wa-float svg{width:24px;height:24px}
+}
+
+/* Product card WhatsApp link */
+.product-card-wa{
+  display:block;width:100%;text-decoration:none;color:inherit;
+}
+.product-card-wa .product-card{
+  cursor:pointer;
+}
 /* ========== PRODUCT SHOWCASE SECTION ========== */
 .showcase-section{
   max-width:1100px;
@@ -874,7 +1060,7 @@ h1{
 </section>
 
 <!-- CONTACT / ENQUIRY FORM -->
-<section class="contact-section">
+<section class="contact-section" id="contact">
   <div class="contact-header">
     <div class="contact-eyebrow"><span class="eyebrow-dot"></span> Send an Enquiry</div>
     <div class="contact-title">Tell Us What<br>You <span>Need</span></div>
@@ -1083,6 +1269,14 @@ h1{
     <div class="overlay-note">🔒 MOQ negotiable · Factory-direct pricing · Sample orders available</div>
   </div>
 </div>
+<!-- ========== FLOATING WHATSAPP BUTTON ========== -->
+<a class="wa-float" href="https://wa.me/923039447337?text=Hi%2C%20I%20found%20your%20website%20and%20want%20to%20enquire%20about%20sourcing%20from%20China." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2C8.28 2 2 8.28 2 16c0 2.44.65 4.72 1.78 6.7L2 30l7.56-1.74A13.93 13.93 0 0 0 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm7.56 19.34c-.32.9-1.88 1.72-2.58 1.82-.66.1-1.48.14-2.38-.16-.56-.18-1.28-.42-2.2-.82-3.88-1.68-6.42-5.6-6.62-5.86-.2-.26-1.6-2.14-1.6-4.08 0-1.94 1.02-2.9 1.38-3.3.36-.4.78-.5 1.04-.5h.74c.24 0 .56-.08.88.66l1.22 2.98c.1.22.04.48-.08.68l-.46.68c-.12.18-.24.36-.1.62.14.26.62 1.04 1.34 1.68.92.82 1.7 1.08 1.94 1.2.24.12.38.1.52-.06l.66-.76c.16-.2.32-.26.52-.18l2.82 1.32c.26.12.42.18.48.28.06.46-.26 1.86-.58 2.76z"/>
+  </svg>
+  <div class="wa-float-tooltip">Chat on WhatsApp</div>
+</a>
+
 <script>
 (function(){
 var T={
@@ -1439,7 +1633,11 @@ function openOverlay(catId){
     var thumbContent = p.img
       ? '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'block\'"/><span class="p-fallback" style="display:none">'+p.emoji+'</span>'
       : '<span class="p-fallback">'+p.emoji+'</span>';
+    // Build WhatsApp message with product name
+    var waMsg = '*EzyChinaDirect Product Enquiry*\n📦 Product: '+p.name+'\n💰 Listed at: '+p.price+' (MOQ: '+p.moq+')\n\nHi, I\'m interested in sourcing this product. Please send me a quote.';
+    var waLink = 'https://wa.me/923039447337?text='+encodeURIComponent(waMsg);
     card.innerHTML =
+      '<a class="product-card-wa" href="'+waLink+'" target="_blank" rel="noopener" title="Enquire about '+p.name+' on WhatsApp">'+
       '<div class="product-thumb">'+thumbContent+'</div>'+
       '<div class="product-info">'+
         '<div class="product-name">'+p.name+'</div>'+
@@ -1447,7 +1645,8 @@ function openOverlay(catId){
           '<span class="product-price">'+p.price+'</span>'+
           '<span class="product-moq">MOQ '+p.moq+'</span>'+
         '</div>'+
-      '</div>';
+      '</div>'+
+      '</a>';
     productGrid.appendChild(card);
   });
 
@@ -1544,7 +1743,7 @@ document.addEventListener('keydown',function(e){
     if(product) msg+='📦 Product: '+product+'\n';
     if(qty)   msg+='🔢 Quantity: '+qty;
 
-    var waUrl='https://wa.me/923000000000?text='+encodeURIComponent(msg);
+    var waUrl='https://wa.me/923039447337?text='+encodeURIComponent(msg);
 
     // Show success state
     document.getElementById('contactForm').style.display='none';
@@ -1556,5 +1755,94 @@ document.addEventListener('keydown',function(e){
 })();
 })();
 </script>
+<!-- ========== CONTACT INFO SECTION ========== -->
+<section class="contact-info-section" id="contact-info">
+  <div class="contact-info-inner">
+    <div class="contact-info-header">
+      <div class="contact-info-eyebrow"><span class="eyebrow-dot" style="background:#ff6b6b"></span> Get In Touch</div>
+      <div class="contact-info-title">Reach Us <span>Directly</span></div>
+      <p class="contact-info-subtitle">WhatsApp is the fastest way to reach our team — usually within minutes during business hours.</p>
+    </div>
+
+    <!-- 3 contact cards -->
+    <div class="contact-info-grid">
+
+      <!-- WhatsApp -->
+      <a class="cinfo-card cinfo-card-link" href="https://wa.me/923039447337?text=Hi%2C%20I%20want%20to%20enquire%20about%20sourcing%20from%20China." target="_blank" rel="noopener">
+        <div class="cinfo-icon-wrap wa">
+          <svg viewBox="0 0 32 32" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 2C8.28 2 2 8.28 2 16c0 2.44.65 4.72 1.78 6.7L2 30l7.56-1.74A13.93 13.93 0 0 0 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm7.56 19.34c-.32.9-1.88 1.72-2.58 1.82-.66.1-1.48.14-2.38-.16-.56-.18-1.28-.42-2.2-.82-3.88-1.68-6.42-5.6-6.62-5.86-.2-.26-1.6-2.14-1.6-4.08 0-1.94 1.02-2.9 1.38-3.3.36-.4.78-.5 1.04-.5h.74c.24 0 .56-.08.88.66l1.22 2.98c.1.22.04.48-.08.68l-.46.68c-.12.18-.24.36-.1.62.14.26.62 1.04 1.34 1.68.92.82 1.7 1.08 1.94 1.2.24.12.38.1.52-.06l.66-.76c.16-.2.32-.26.52-.18l2.82 1.32c.26.12.42.18.48.28.06.46-.26 1.86-.58 2.76z"/>
+          </svg>
+        </div>
+        <div class="cinfo-label">WhatsApp</div>
+        <div class="cinfo-value">+92 303 944 7337</div>
+        <div class="cinfo-sub">Chat with our sourcing team<br>in Urdu, English, or Arabic</div>
+        <div class="cinfo-chip">
+          <span style="width:6px;height:6px;background:#4ade80;border-radius:50%;flex-shrink:0;animation:pulse 2s infinite"></span>
+          Tap to Chat Now
+        </div>
+      </a>
+
+      <!-- Email -->
+      <a class="cinfo-card cinfo-card-link" href="mailto:ezychinadirect@gmail.com">
+        <div class="cinfo-icon-wrap email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#DE2910" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="20" height="16" rx="3"/>
+            <path d="M2 7l10 7 10-7"/>
+          </svg>
+        </div>
+        <div class="cinfo-label">Email</div>
+        <div class="cinfo-value" style="font-size:16px">ezychinadirect<br>@gmail.com</div>
+        <div class="cinfo-sub">For quotes, partnerships,<br>and detailed enquiries</div>
+        <div class="cinfo-chip email-chip">Send Email</div>
+      </a>
+
+      <!-- Response Time -->
+      <div class="cinfo-card">
+        <div class="cinfo-icon-wrap office" style="background:rgba(99,179,237,.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#63b3ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div class="cinfo-label">Response Time</div>
+        <div class="cinfo-value" style="font-size:20px">Within Hours</div>
+        <div class="cinfo-sub">WhatsApp: usually &lt;1 hour<br>Email: within 24 hours<br>Business hours: 9am–9pm PKT</div>
+        <div class="cinfo-chip" style="background:rgba(99,179,237,.12);border-color:rgba(99,179,237,.25);color:#90cdf4">🌍 Pakistan &amp; Gulf Time</div>
+      </div>
+    </div>
+
+    <!-- Office Locations -->
+    <div class="offices-row">
+      <div class="office-card">
+        <div class="office-flag">🇨🇳</div>
+        <div>
+          <div class="office-city">Yiwu Office</div>
+          <div class="office-detail">Futian Market District, Yiwu<br>Zhejiang Province, China<br>Factory sourcing &amp; supplier audits</div>
+          <div class="office-badge">🏭 Registered Office</div>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇨🇳</div>
+        <div>
+          <div class="office-city">Guangzhou Office</div>
+          <div class="office-detail">Haizhu District, Guangzhou<br>Guangdong Province, China<br>Electronics &amp; bulk merchandise</div>
+          <div class="office-badge">🏭 Registered Office</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="contact-info-divider"/>
+
+    <div class="contact-info-footer-row">
+      <div class="contact-footer-brand">
+        <div class="contact-footer-dot"></div>
+        <div class="contact-footer-name">Ezy<span>China</span>Direct</div>
+      </div>
+      <div class="contact-footer-copy">© 2025 EzyChinaDirect · China Sourcing Agency · All rights reserved</div>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
