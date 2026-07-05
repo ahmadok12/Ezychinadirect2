@@ -752,7 +752,7 @@ h1{
 .cinfo-chip.office-chip{background:rgba(255,222,0,.1);border-color:rgba(255,222,0,.25);color:#ffe066}
 
 .offices-row{
-  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;
 }
 .office-card{
   background:rgba(255,255,255,.04);
@@ -761,7 +761,11 @@ h1{
   padding:22px 24px;
   display:flex;align-items:flex-start;gap:14px;
 }
-.office-flag{font-size:28px;flex-shrink:0;line-height:1;margin-top:2px}
+.office-flag{
+  width:32px;height:24px;flex-shrink:0;margin-top:3px;
+  border-radius:4px;object-fit:cover;
+  box-shadow:0 0 0 1px rgba(255,255,255,.12);
+}
 .office-city{
   font-family:var(--font-display);font-size:20px;font-weight:900;
   text-transform:uppercase;color:#fff;letter-spacing:.4px;margin-bottom:3px;
@@ -2691,7 +2695,7 @@ submitBtn.addEventListener('click',function(){
     <!-- Office Locations -->
     <div class="offices-row">
       <div class="office-card">
-        <div class="office-flag">🇨🇳</div>
+        <img class="office-flag" src="https://flagcdn.com/w80/cn.png" alt="China flag"/>
         <div>
           <div class="office-city">Yiwu Office</div>
           <div class="office-detail">Futian Market District, Yiwu<br>Zhejiang Province, China<br>Factory sourcing &amp; supplier audits</div>
@@ -2699,10 +2703,18 @@ submitBtn.addEventListener('click',function(){
         </div>
       </div>
       <div class="office-card">
-        <div class="office-flag">🇨🇳</div>
+        <img class="office-flag" src="https://flagcdn.com/w80/cn.png" alt="China flag"/>
         <div>
           <div class="office-city">Guangzhou Office</div>
           <div class="office-detail">Haizhu District, Guangzhou<br>Guangdong Province, China<br>Electronics &amp; bulk merchandise</div>
+          <div class="office-badge">🏭 Registered Office</div>
+        </div>
+      </div>
+      <div class="office-card">
+        <img class="office-flag" src="https://flagcdn.com/w80/pk.png" alt="Pakistan flag"/>
+        <div>
+          <div class="office-city">Lahore Office</div>
+          <div class="office-detail">Gulberg III, Lahore<br>Punjab, Pakistan<br>Client relations &amp; local support</div>
           <div class="office-badge">🏭 Registered Office</div>
         </div>
       </div>
