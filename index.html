@@ -1228,6 +1228,40 @@ h1{
   font-family:var(--font-body);font-size:12px;color:var(--gray);line-height:1.5;
 }
 
+/* "Didn't find your product?" CTA — bottom of each expanded product list */
+.overlay-notfound{
+  margin-top:20px;
+  padding:22px 20px;
+  border-radius:18px;
+  background:#fafafa;
+  border:1.5px dashed rgba(222,41,16,.25);
+  text-align:center;
+}
+.overlay-notfound-icon{
+  font-size:26px;margin-bottom:8px;
+}
+.overlay-notfound-title{
+  font-family:var(--font-display);font-size:18px;font-weight:900;
+  text-transform:uppercase;letter-spacing:.4px;color:var(--black);
+  margin-bottom:6px;
+}
+.overlay-notfound-text{
+  font-family:var(--font-body);font-size:13px;color:var(--gray);
+  line-height:1.55;max-width:420px;margin:0 auto 16px;
+}
+.overlay-notfound-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--red);color:#fff;border:none;
+  padding:11px 26px;border-radius:50px;
+  font-family:var(--font-display);font-size:15px;
+  font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;
+  transition:all .2s;
+  box-shadow:0 4px 16px rgba(222,41,16,.25);
+}
+.overlay-notfound-btn:hover{background:#b81f0a;transform:translateY(-2px)}
+.overlay-notfound-btn svg{width:16px;height:16px;fill:#fff;flex-shrink:0}
+
 @media(max-width:900px){
   .cat-grid{grid-template-columns:1fr 1fr;gap:16px}
   .product-grid{grid-template-columns:repeat(4,1fr)}
@@ -1911,6 +1945,16 @@ h1{
   </div>
   <div class="overlay-body">
     <div class="product-grid" id="productGrid"></div>
+
+    <div class="overlay-notfound">
+      <div class="overlay-notfound-icon">🔍</div>
+      <div class="overlay-notfound-title">Didn't Find Your Product?</div>
+      <div class="overlay-notfound-text">No problem — tell us exactly what you're looking for and we'll source it for you directly from the factory.</div>
+      <a class="overlay-notfound-btn" id="overlayNotFoundBtn" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.44.65 4.72 1.78 6.7L2 30l7.56-1.74A13.93 13.93 0 0 0 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm7.56 19.34c-.32.9-1.88 1.72-2.58 1.82-.66.1-1.48.14-2.38-.16-.56-.18-1.28-.42-2.2-.82-3.88-1.68-6.42-5.6-6.62-5.86-.2-.26-1.6-2.14-1.6-4.08 0-1.94 1.02-2.9 1.38-3.3.36-.4.78-.5 1.04-.5h.74c.24 0 .56-.08.88.66l1.22 2.98c.1.22.04.48-.08.68l-.46.68c-.12.18-.24.36-.1.62.14.26.62 1.04 1.34 1.68.92.82 1.7 1.08 1.94 1.2.24.12.38.1.52-.06l.66-.76c.16-.2.32-.26.52-.18l2.82 1.32c.26.12.42.18.48.28.06.46-.26 1.86-.58 2.76z"/></svg>
+        Request a Custom Product
+      </a>
+    </div>
   </div>
   <div class="overlay-footer">
     <button class="overlay-enquire" id="overlayEnquire">📦 Enquire About This Category</button>
@@ -2006,32 +2050,39 @@ applyLang('en');applyCurr(autoCurr);fetchRates();
 var CATEGORIES = [
   {
     id:'mobile',
-    name:'Mobile Accessories',
+    name:'Mobile Accessories &amp; Wearables',
     icon:'📱',
     color:'#fff0eb',
     accent:'#DE2910',
-    preview:['📱','🔌','🎧','🔋','📲','🖥️'],
+    preview:[
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/1.%20ANC%20TWS%20Wireless%20Earbuds.jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/2.%20Magnetic%20Wireless%20Power%20Banks.jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/3.%20Smartwatches%20and%20Fitness%20Trackers.jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/4.%20Foldable%203-in-1%20Wireless%20Charging%20Stations.jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/5.%20GaN%20fast%20chargers%2C%2045W-140W.jpg',
+      'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/6.%20Braided%20USB-C%20PD%20fast-charging%20cables.jpg'
+    ],
     products:[
-      {name:'Magsafe Wireless Charger 15W',price:'$2.40',moq:'200 pcs',emoji:'🔋'},
-      {name:'Type-C Fast Charging Cable 1.2m',price:'$0.85',moq:'500 pcs',emoji:'🔌'},
-      {name:'AirPods Pro Style TWS Earbuds',price:'$6.50',moq:'100 pcs',emoji:'🎧'},
-      {name:'Tempered Glass Screen Protector',price:'$0.45',moq:'1000 pcs',emoji:'📱'},
-      {name:'Phone Stand Foldable Aluminium',price:'$1.20',moq:'300 pcs',emoji:'🖥️'},
-      {name:'Car Phone Mount Dashboard',price:'$1.80',moq:'200 pcs',emoji:'🚗'},
-      {name:'Silicone Phone Case Universal',price:'$0.60',moq:'500 pcs',emoji:'📲'},
-      {name:'Portable Power Bank 10000mAh',price:'$8.20',moq:'100 pcs',emoji:'🔋'},
-      {name:'USB Hub 4-Port Type-C',price:'$3.40',moq:'150 pcs',emoji:'🔌'},
-      {name:'Selfie Ring Light Clip-On',price:'$1.50',moq:'300 pcs',emoji:'💡'},
-      {name:'Bluetooth Earphones Neckband',price:'$4.20',moq:'100 pcs',emoji:'🎧'},
-      {name:'Lightning to USB-C Adapter',price:'$0.90',moq:'500 pcs',emoji:'🔌'},
-      {name:'PopSocket Phone Grip Branded',price:'$0.55',moq:'1000 pcs',emoji:'📱'},
-      {name:'Phone Lens Kit 3-in-1 Clip',price:'$2.10',moq:'200 pcs',emoji:'📷'},
-      {name:'Wireless Earbuds Sport IPX7',price:'$7.80',moq:'100 pcs',emoji:'🎧'},
-      {name:'Fast Wall Charger 65W GaN',price:'$5.60',moq:'100 pcs',emoji:'⚡'},
-      {name:'Retractable USB Cable 3-in-1',price:'$1.10',moq:'500 pcs',emoji:'🔌'},
-      {name:'Magnetic Phone Wallet Card Holder',price:'$1.40',moq:'300 pcs',emoji:'💳'},
-      {name:'Screen Cleaning Kit Microfibre',price:'$0.75',moq:'500 pcs',emoji:'🧹'},
-      {name:'Finger Ring Stand 360° Rotate',price:'$0.40',moq:'1000 pcs',emoji:'💍'}
+      {name:'ANC TWS Wireless Earbuds',price:'$7.20',moq:'100 pcs',emoji:'🎧',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/1.%20ANC%20TWS%20Wireless%20Earbuds.jpg'},
+      {name:'Magnetic Wireless Power Banks',price:'$6.80',moq:'100 pcs',emoji:'🔋',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/2.%20Magnetic%20Wireless%20Power%20Banks.jpg'},
+      {name:'Smartwatches and Fitness Trackers',price:'$9.40',moq:'50 pcs',emoji:'⌚',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/3.%20Smartwatches%20and%20Fitness%20Trackers.jpg'},
+      {name:'Foldable 3-in-1 Wireless Charging Stations',price:'$8.60',moq:'50 pcs',emoji:'⚡',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/4.%20Foldable%203-in-1%20Wireless%20Charging%20Stations.jpg'},
+      {name:'GaN Fast Chargers, 45W–140W',price:'$6.20',moq:'100 pcs',emoji:'🔌',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/5.%20GaN%20fast%20chargers%2C%2045W-140W.jpg'},
+      {name:'Braided USB-C PD Fast-Charging Cables',price:'$1.10',moq:'300 pcs',emoji:'🔌',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/6.%20Braided%20USB-C%20PD%20fast-charging%20cables.jpg'},
+      {name:'Premium Leather &amp; Magnetic Phone Cases',price:'$2.80',moq:'200 pcs',emoji:'📱',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/7.%20Premium%20leather%20and%20magnetic%20phone%20cases.jpg'},
+      {name:'Privacy &amp; Anti-Glare Tempered Glass',price:'$0.60',moq:'500 pcs',emoji:'🛡️',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/8.%20Privacy%20and%20anti-glare%20tempered%20glass.jpg'},
+      {name:'Magnetic &amp; Gravity Car Phone Mounts',price:'$2.40',moq:'200 pcs',emoji:'🚗',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/9.%20Magnetic%20and%20gravity%20car%20phone%20mounts.jpg'},
+      {name:'Wireless Lavalier Microphones',price:'$5.60',moq:'100 pcs',emoji:'🎙️',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/10.%20Wireless%20lavalier%20microphones.jpg'},
+      {name:'Smartphone Gimbals &amp; Stabilisers',price:'$12.80',moq:'30 pcs',emoji:'🎥',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/11.%20Smartphone%20gimbals%20and%20stabilisers.jpg'},
+      {name:'Mobile Gaming Cooling Fans',price:'$3.40',moq:'150 pcs',emoji:'🌀',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/12.%20Mobile%20gaming%20cooling%20fans.jpg'},
+      {name:'Ring Lights with Adjustable Tripods',price:'$4.20',moq:'100 pcs',emoji:'💡',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/13.%20Ring%20lights%20with%20adjustable%20tripods.jpg'},
+      {name:'Selfie Sticks',price:'$1.60',moq:'300 pcs',emoji:'🤳',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/14.%20Selfie-sticks.jpg'},
+      {name:'Portable Bluetooth Speakers',price:'$7.80',moq:'80 pcs',emoji:'🔊',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/15.%20Portable%20Bluetooth%20speakers.jpg'},
+      {name:'Wireless Neckband Earphones',price:'$4.60',moq:'150 pcs',emoji:'🎧',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/16.%20Wireless%20neckband%20earphones.jpg'},
+      {name:'Universal Travel Adapters with USB-C',price:'$2.20',moq:'200 pcs',emoji:'🔌',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/17.%20Universal%20travel%20adapters%20with%20USB-C.jpg'},
+      {name:'Multi-Port Fast Car Chargers',price:'$1.90',moq:'250 pcs',emoji:'🚗',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/18.%20Multi-port%20fast%20car%20chargers.jpg'},
+      {name:'Foldable Tablet &amp; Laptop Stands',price:'$3.80',moq:'150 pcs',emoji:'💻',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/19.%20Foldable%20tablet%20and%20laptop%20stands.jpg'},
+      {name:"Kids' GPS Smartwatches with Calling",price:'$11.40',moq:'40 pcs',emoji:'⌚',img:'https://raw.githubusercontent.com/ahmadok12/Ezychinadirect2/main/1.%20Mobile%20Accessories%20%26%20Wearables/20.%20Kids%27%20GPS%20smartwatches%20with%20calling.jpg'}
     ]
   },
   {
@@ -2379,6 +2430,7 @@ var overlaySub  = document.getElementById('overlaySub');
 var productGrid = document.getElementById('productGrid');
 var closeBtn    = document.getElementById('overlayClose');
 var enquireBtn  = document.getElementById('overlayEnquire');
+var notFoundBtn = document.getElementById('overlayNotFoundBtn');
 var activeCatId = null;
 
 function openOverlay(catId){
@@ -2414,6 +2466,10 @@ function openOverlay(catId){
       '</a>';
     productGrid.appendChild(card);
   });
+
+  // Populate "Didn't find your product?" CTA with category-specific WhatsApp message
+  var nfMsg = '*EzyChinaDirect Custom Product Request*\n📂 Category: '+cat.name+'\n\nHi, I couldn\'t find the exact product I need in this category. Could you help me source it?';
+  notFoundBtn.href = 'https://wa.me/923039447337?text='+encodeURIComponent(nfMsg);
 
   backdrop.classList.add('open');
   panel.classList.add('open');
